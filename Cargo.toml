@@ -1,10 +1,24 @@
 [package]
-name = "f3c"
+name = "sf_metadata_lint"
 version = "0.1.0"
 edition = "2021"
+
+[[bin]]
+name = "sf-metadata-lint"
+path = "src/main_sf_metadata_lint.rs"
+
+[[bin]]
+name = "structs-generator"
+path = "src/main_structs_generator.rs"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+convert_case = "0.6.0"
+exitcode = "1.1.2"
 glob = "0.3.1"
-quick-xml = "0.28.1"
+quick-xml = { version = "0.28.1", features = ["serialize"] }
+regex = "1.7.3"
+serde = { version = "1.0.160", features = ["derive"] }
+serde-enum-str = "0.3.2"
+serde-xml-rs = "0.6.0"
