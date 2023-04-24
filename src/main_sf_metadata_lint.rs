@@ -24,6 +24,7 @@ fn main() {
         Box::new(all_xml_files::CheckAllXmlFiles {}),
         Box::new(permission_set::CheckPermissionSet {}),
         Box::new(object_field::CheckObjectField {}),
+        Box::new(profile::CheckProfiles {}),
     ];
     
     let findings: Option<Vec<finding::Finding>> = run_all_checks(checkers);

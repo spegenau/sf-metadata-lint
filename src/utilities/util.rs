@@ -41,6 +41,12 @@ pub fn read_file(path_buf: PathBuf) -> String {
     content
 }
 
+pub fn does_file_exist_in_project(rel_path: &String) -> bool {
+    let file_path = format!("{}/force-app/main/default/{rel_path}", get_project_path());
+    
+    std::path::Path::new(&file_path).exists()
+}
+
 pub fn parse_file_as_struct<T: for<'a> Deserialize<'a>>(path: PathBuf) -> Result<T, String> {
     let xml = read_file(path); //.replace("<xsd:", "<").replace("</xsd:", "</");
     
