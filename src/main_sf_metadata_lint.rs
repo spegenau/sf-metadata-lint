@@ -95,7 +95,7 @@ fn process_findings(
         .collect::<Vec<&Finding>>();
 
     if warnings.len() > 0 {
-        println!("WARNINGS:");
+        println!("\nWARNINGS:");
         print_messages(&warnings, project_path);
         if !ignore_warnings {
             return_code = exitcode::DATAERR;
@@ -103,10 +103,12 @@ fn process_findings(
     }
 
     if errors.len() > 0 {
-        println!("ERRORS:");
+        println!("\nERRORS:");
         print_messages(&errors, project_path);
         return_code = exitcode::DATAERR;
     }
+
+    println!("\n\nFound:\t{} errors,\t{} warnings", errors.len(), warnings.len());
 
     return return_code;
 }

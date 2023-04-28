@@ -34,4 +34,15 @@ impl Finding {
             r#type: FindingType::ERROR,
         }
     }
+
+    pub fn new_warning(file: &String, message: String) -> Finding {
+        Finding {
+            file: String::from(file.as_str()),
+            line: None,
+            position: None,
+            message,
+            solution: None,
+            r#type: FindingType::WARNING,
+        }
+    }
 }

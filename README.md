@@ -1,6 +1,7 @@
 # Salesforce Metadata Lint
 
 Checks the Salesforce Metadata in a project for common mistakes to avoid time-consuming deployment errors, like
+
 - Missed parts in your commits, i.e. you try to deploy a page layout without the field
 - Destroyed XMLs for example when merging XML-files or selecting only parts of it
 
@@ -35,8 +36,9 @@ _your need to figure that yourself...Sorry..._
 
 ## What errors can it find?
 
-| Metadata Type   | Error                                           |
-| --------------- | ----------------------------------------------- |
-| All XML-Files   | - unparseable files                             |
-| Permission Sets | - permissions for non-existing fields           |
-| Profiles        | - assignments of layouts that are not available |
+| Metadata Type   | Error                                                                                                                                      |
+| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| All XML-Files   | - unparseable files                                                                                                                        |
+| Permission Sets | - permissions for non-existing fields                                                                                                      |
+| Profiles        | - assignments of layouts that are not available                                                                                            |
+|                 | - Best practice: Use Permission Sets instead to give access to Record Types, Apex Classes, Pages, Objects, Fields, Flows, User Permissions |

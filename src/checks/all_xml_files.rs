@@ -57,7 +57,7 @@ impl CheckAllXmlFiles {
                         file: String::from(file_path),
                         line: None,
                         position: Some(reader.buffer_position() as u32),
-                        message: e.to_string(),
+                        message: format!("XML Parsing Error: {}", e.to_string()),
                         r#type: FindingType::ERROR,
                         solution: None,
                     });
