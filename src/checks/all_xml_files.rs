@@ -2,18 +2,18 @@ use std::{path::PathBuf, fs};
 
 use quick_xml::{Reader, events::Event};
 
-use crate::{sf_xml_file::SFXMLFile, util::{get_files_by_pattern, get_project_path}, finding::{Finding, FindingType}};
+use crate::{sf_xml_file::SFXMLFile, util::{get_files_by_pattern}, finding::{Finding, FindingType}};
 
 pub struct CheckAllXmlFiles {
 
 }
 
 impl SFXMLFile for CheckAllXmlFiles {
-    fn run_checks(&mut self) -> Vec<Finding> {
+    fn run_checks(&mut self, project_path: &PathBuf) -> Vec<Finding> {
         
         let mut findings: Vec<Finding> = Vec::new();
         
-        findings.append(&mut self.validate_all_xml_structures(get_project_path(), self.pattern()));
+        findings.append(&mut self.validate_all_xml_structures(project_path, self.pattern()));
         
         findings
     }
@@ -24,7 +24,7 @@ impl SFXMLFile for CheckAllXmlFiles {
 }
 
 impl CheckAllXmlFiles {
-    fn validate_all_xml_structures(&self, project_path: String, pattern: String) -> Vec<Finding> {
+    fn validate_all_xml_structures(&self, project_path: &PathBuf, pattern: String) -> Vec<Finding> {
         let files = get_files_by_pattern(&project_path, &pattern);
     
         let mut findings: Vec<Finding> = Vec::new();

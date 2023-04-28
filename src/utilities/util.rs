@@ -1,7 +1,7 @@
 use glob::glob;
 use quick_xml::DeError;
 use serde::Deserialize;
-use std::{env, fs, path::PathBuf, collections::HashMap};
+use std::{fs, path::PathBuf, collections::HashMap};
 
 use quick_xml::events::Event;
 use quick_xml::reader::Reader;
@@ -10,8 +10,9 @@ use crate::{finding::{Finding, FindingType}, sf_xml_file::SFXMLFile};
 
 pub const MANAGED_PACKAGE_PATTERN: &str = "[a-zA-Z0-9_]+[_]{2}[a-zA-Z0-9_]+[__]{2}c";
 
-pub fn get_files_by_pattern(project_path: &String, pattern: &String) -> Vec<std::path::PathBuf> {
-    let glob_pattern = String::from(project_path) + pattern;
+pub fn get_files_by_pattern(project_path: &PathBuf, pattern: &String) -> Vec<std::path::PathBuf> {
+    let path = String::from(project_path.to_str().unwrap());
+    let glob_pattern = path + pattern;
 
     let mut files: Vec<std::path::PathBuf> = Vec::new();
     for entry in glob(&glob_pattern).expect("Failed to read glob pattern") {
@@ -24,16 +25,6 @@ pub fn get_files_by_pattern(project_path: &String, pattern: &String) -> Vec<std:
     files
 }
 
-pub fn get_project_path() -> String {
-    let args: Vec<String> = env::args().collect();
-    let mut project_path = &String::from(".");
-    if args.len() == 2 {
-        project_path = &args[1];
-    }
-
-    return String::from(project_path);
-}
-
 pub fn read_file(path_buf: PathBuf) -> String {
     let file_path = path_buf.to_str().unwrap();
     let content = fs::read_to_string(file_path).expect("Unable to read file");
@@ -41,8 +32,8 @@ pub fn read_file(path_buf: PathBuf) -> String {
     content
 }
 
-pub fn does_file_exist_in_project(rel_path: &String) -> bool {
-    let file_path = format!("{}/force-app/main/default/{rel_path}", get_project_path());
+pub fn does_file_exist_in_project(rel_path: &String, project_path: &PathBuf) -> bool {
+    let file_path = format!("{}/force-app/main/default/{rel_path}", project_path.to_str().unwrap());
     
     std::path::Path::new(&file_path).exists()
 }
@@ -62,8 +53,8 @@ pub fn parse_file_as_struct<T: for<'a> Deserialize<'a>>(path: PathBuf) -> Result
     }
 }
 
-pub fn get_structs<T: for<'a> Deserialize<'a>>(the_checker_struct: &impl SFXMLFile) -> (HashMap<String, T>, Vec<Finding>) {
-    let files = the_checker_struct.get_file_list();
+pub fn get_structs<T: for<'a> Deserialize<'a>>(the_checker_struct: &impl SFXMLFile, project_path: &PathBuf) -> (HashMap<String, T>, Vec<Finding>) {
+    let files = the_checker_struct.get_file_list(project_path);
 
     let mut structs: HashMap<String, T> = HashMap::new();
     let mut findings: Vec<Finding> = Vec::new();

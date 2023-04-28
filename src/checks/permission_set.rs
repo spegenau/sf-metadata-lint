@@ -1,3 +1,5 @@
+use std::path::PathBuf;
+
 use regex::Regex;
 
 use crate::object_field::CheckObjectField;
@@ -11,10 +13,10 @@ use self::util::{get_structs, MANAGED_PACKAGE_PATTERN};
 pub struct CheckPermissionSet {}
 
 impl SFXMLFile for CheckPermissionSet {
-    fn run_checks(&mut self) -> Vec<Finding> {
+    fn run_checks(&mut self, project_path: &PathBuf) -> Vec<Finding> {
         let mut findings: Vec<Finding> = Vec::new();
 
-        findings.append(&mut self.check_field_availability());
+        findings.append(&mut self.check_field_availability(project_path));
 
         findings
     }
@@ -25,12 +27,12 @@ impl SFXMLFile for CheckPermissionSet {
 }
 
 impl CheckPermissionSet {
-    pub fn check_field_availability(&mut self) -> Vec<Finding> {
-        let (structs, mut findings) = get_structs::<PermissionSet>(self);
+    pub fn check_field_availability(&mut self, project_path: &PathBuf) -> Vec<Finding> {
+        let (structs, mut findings) = get_structs::<PermissionSet>(self, project_path);
 
         if structs.len() > 0 {
             let field_checker = CheckObjectField {};
-            let (fields, get_fields_findings) = field_checker.get_all_fields();
+            let (fields, get_fields_findings) = field_checker.get_all_fields(project_path);
             findings.extend(get_fields_findings);
 
             let managed_package_expr = Regex::new(MANAGED_PACKAGE_PATTERN).unwrap();

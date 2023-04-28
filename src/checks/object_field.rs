@@ -11,7 +11,7 @@ use self::util::get_structs;
 pub struct CheckObjectField {}
 
 impl SFXMLFile for CheckObjectField {
-    fn run_checks(&mut self) -> Vec<Finding> {
+    fn run_checks(&mut self, _project_path: &PathBuf) -> Vec<Finding> {
         
         let findings: Vec<Finding> = Vec::new();
                 
@@ -24,10 +24,10 @@ impl SFXMLFile for CheckObjectField {
 }
 
 impl CheckObjectField {
-    pub fn get_all_fields(&self) -> (HashMap<String, HashMap<String, CustomField>>, Vec<Finding>) {
+    pub fn get_all_fields(&self, project_path: &PathBuf) -> (HashMap<String, HashMap<String, CustomField>>, Vec<Finding>) {
         let mut map: HashMap<String, HashMap<String, CustomField>> = HashMap::new();
 
-        let (mut structs, findings) = get_structs::<CustomField>(self);
+        let (mut structs, findings) = get_structs::<CustomField>(self, project_path);
 
         for (path, the_field) in structs.drain() {
             let (object_name, field_name) = CheckObjectField::path_to_object_and_field(&path);

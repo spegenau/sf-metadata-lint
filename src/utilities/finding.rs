@@ -1,6 +1,5 @@
-use crate::util::get_project_path;
-
-
+use std::path::PathBuf;
+#[derive(PartialEq)]
 pub enum FindingType {
     WARNING,
     ERROR
@@ -16,14 +15,13 @@ pub struct Finding {
 }
 
 impl Finding {
-    pub fn get_message(&self) -> String {
-        let project_path = get_project_path();
-        let filename = self.file.replace(project_path.as_str(), "");
+    pub fn get_message(&self, project_path: &PathBuf) -> String {
+        let filename = self.file.replace(project_path.to_str().unwrap(), "");
         format!("{}: {}", filename, self.message)
     }
 
-    pub fn log(&self) {
-        println!("{}", self.get_message());
+    pub fn log(&self, project_path: &PathBuf) {
+        println!("{}", self.get_message(project_path));
     }
 
     pub fn new_error(file: &String, message: String) -> Finding {
