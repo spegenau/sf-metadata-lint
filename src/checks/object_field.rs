@@ -46,6 +46,20 @@ impl CheckObjectField {
         return (map, findings);
     }
 
+    pub fn does_field_exist(project_path: &PathBuf, object: &str, field: &str) -> bool {
+        let mut field_definition_path: PathBuf = PathBuf::new();
+        field_definition_path.push(project_path);
+        field_definition_path.push("force-app");
+        field_definition_path.push("main");
+        field_definition_path.push("default");
+        field_definition_path.push("objects");
+        field_definition_path.push(object);
+        field_definition_path.push("fields");
+        field_definition_path.push(format!("{field}.field-meta.xml"));
+
+        return field_definition_path.exists();
+    }
+
     fn path_to_object_and_field(file_path: &String) -> (String, String) {
         let buf = PathBuf::from(file_path);
         let mut components = buf.components().collect::<Vec<_>>();
@@ -56,4 +70,6 @@ impl CheckObjectField {
 
         return (String::from(object), String::from(field));
     }
+
+
 }

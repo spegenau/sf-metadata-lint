@@ -40,5 +40,6 @@ _your need to figure that yourself...Sorry..._
 | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
 | All XML-Files   | - unparseable files                                                                                                                        |
 | Permission Sets | - permissions for non-existing fields                                                                                                      |
+|                 | - permissions for required fields                                                                                                          |
 | Profiles        | - assignments of layouts that are not available                                                                                            |
 |                 | - Best practice: Use Permission Sets instead to give access to Record Types, Apex Classes, Pages, Objects, Fields, Flows, User Permissions |
