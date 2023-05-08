@@ -7,7 +7,6 @@ pub use crate::utilities::*;
 use self::finding::Finding;
 use self::sf_xml_file::SFXMLFile;
 use self::util::get_structs;
-
 pub struct CheckObjectField {}
 
 impl SFXMLFile for CheckObjectField {
@@ -58,6 +57,11 @@ impl CheckObjectField {
         field_definition_path.push(format!("{field}.field-meta.xml"));
 
         return field_definition_path.exists();
+    }
+
+    pub fn is_standard_or_managed(field_name: &str) -> bool {
+        let occurences = field_name.match_indices("__").count();
+        occurences == 2 || occurences == 0
     }
 
     fn path_to_object_and_field(file_path: &String) -> (String, String) {

@@ -49,6 +49,7 @@ fn main() {
         Box::new(object_field::CheckObjectField {}),
         Box::new(profile::CheckProfiles {}),
         Box::new(translation::CheckTranslations {}),
+        Box::new(layout::CheckLayout {}),
     ];
 
     let findings: Option<Vec<finding::Finding>> = run_all_checks(checkers, &project_path);
