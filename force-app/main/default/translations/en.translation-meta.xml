@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Translations xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customApplications>
+        <label><!-- Just a default value --></label>
+        <name>Any_App</name>
+    </customApplications>
+    <customLabels>
+        <label><!-- no translation --></label>
+        <name>Any_Label</name>
+    </customLabels>
+    <customTabs>
+        <label><!-- no translation --></label>
+        <name>Any_Tab</name>
+    </customTabs>
+    <quickActions>
+        <label><!-- NewEvent --></label>
+        <name>NewEvent</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- LogACall --></label>
+        <name>LogACall</name>
+    </quickActions>
+    <flowDefinitions>
+        <flows />
+        <fullName>Some_empty_flow</fullName>
+    </flowDefinitions>
+</Translations>

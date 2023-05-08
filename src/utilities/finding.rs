@@ -1,4 +1,4 @@
-use std::path::PathBuf;
+
 #[derive(PartialEq)]
 pub enum FindingType {
     WARNING,
@@ -15,13 +15,13 @@ pub struct Finding {
 }
 
 impl Finding {
-    pub fn get_message(&self, project_path: &PathBuf) -> String {
-        let filename = self.file.replace(project_path.to_str().unwrap(), "");
+    pub fn get_message(&self) -> String {
+        let filename = &self.file;
         format!("{}: {}", filename, self.message)
     }
 
-    pub fn log(&self, project_path: &PathBuf) {
-        println!("{}", self.get_message(project_path));
+    pub fn log(&self) {
+        println!("{}", self.get_message());
     }
 
     pub fn new_error(file: &String, message: String) -> Finding {

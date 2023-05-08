@@ -43,3 +43,8 @@ _your need to figure that yourself...Sorry..._
 |                 | - permissions for required fields                                                                                                          |
 | Profiles        | - assignments of layouts that are not available                                                                                            |
 |                 | - Best practice: Use Permission Sets instead to give access to Record Types, Apex Classes, Pages, Objects, Fields, Flows, User Permissions |
+| Translations    | - Empty app translations                                                                                                                   |
+|                 | - Empty label translations                                                                                                                 |
+|                 | - Empty tab translations                                                                                                                   |
+|                 | - Empty quick action translations                                                                                                          |
+|                 | - Empty flow translations                                                                                                                  |

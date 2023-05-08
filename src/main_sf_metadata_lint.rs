@@ -48,11 +48,12 @@ fn main() {
         Box::new(permission_set::CheckPermissionSet {}),
         Box::new(object_field::CheckObjectField {}),
         Box::new(profile::CheckProfiles {}),
+        Box::new(translation::CheckTranslations {}),
     ];
 
     let findings: Option<Vec<finding::Finding>> = run_all_checks(checkers, &project_path);
 
-    let exit_code = process_findings(findings, &project_path, &cli.ignore_warnings);
+    let exit_code = process_findings(findings, &cli.ignore_warnings);
 
     let end_time = Instant::now();
     println!("\nlinting took {:?}", end_time.duration_since(start_time));
@@ -78,7 +79,6 @@ fn run_all_checks(
 
 fn process_findings(
     findings: Option<Vec<Finding>>,
-    project_path: &PathBuf,
     ignore_warnings: &bool,
 ) -> i32 {
     let mut return_code = exitcode::OK;
@@ -96,7 +96,7 @@ fn process_findings(
 
     if warnings.len() > 0 {
         println!("\nWARNINGS:");
-        print_messages(&warnings, project_path);
+        print_messages(&warnings);
         if !ignore_warnings {
             return_code = exitcode::DATAERR;
         }
@@ -104,7 +104,7 @@ fn process_findings(
 
     if errors.len() > 0 {
         println!("\nERRORS:");
-        print_messages(&errors, project_path);
+        print_messages(&errors);
         return_code = exitcode::DATAERR;
     }
 
@@ -113,10 +113,10 @@ fn process_findings(
     return return_code;
 }
 
-fn print_messages(findings: &Vec<&Finding>, project_path: &PathBuf) {
+fn print_messages(findings: &Vec<&Finding>) {
     let mut messages: Vec<String> = findings
         .iter()
-        .map(|f| f.get_message(project_path))
+        .map(|f| f.get_message())
         .collect();
 
     messages.sort();
