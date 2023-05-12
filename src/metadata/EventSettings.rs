@@ -22,4 +22,6 @@ pub struct EventSettings  {
 	pub enable_terminate_oldest_session: Option<bool>,
 	#[serde(rename = "enableTransactionSecurityPolicies")]
 	pub enable_transaction_security_policies: Option<bool>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

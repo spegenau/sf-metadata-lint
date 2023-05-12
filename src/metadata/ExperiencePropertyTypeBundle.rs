@@ -12,4 +12,6 @@ pub struct ExperiencePropertyTypeBundle  {
 	pub master_label: String,
 	#[serde(rename = "schemaMCTBody")]
 	pub schema_mct_body: String,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

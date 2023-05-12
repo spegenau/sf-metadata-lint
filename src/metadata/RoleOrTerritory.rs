@@ -14,4 +14,6 @@ pub struct RoleOrTerritory  {
 	pub name: String,
 	#[serde(rename = "opportunityAccessLevel")]
 	pub opportunity_access_level: Option<String>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

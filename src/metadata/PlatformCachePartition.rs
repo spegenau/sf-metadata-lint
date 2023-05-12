@@ -11,4 +11,6 @@ pub struct PlatformCachePartition  {
 	pub master_label: String,
 	#[serde(rename = "platformCachePartitionTypes")]
 	pub platform_cache_partition_types: Option<Vec<PlatformCachePartitionType>>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

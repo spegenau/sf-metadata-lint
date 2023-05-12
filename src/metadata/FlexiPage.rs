@@ -28,4 +28,6 @@ pub struct FlexiPage  {
 	pub template: FlexiPageTemplateInstance,
 	#[serde(rename = "type")]
 	pub _type: FlexiPageType,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

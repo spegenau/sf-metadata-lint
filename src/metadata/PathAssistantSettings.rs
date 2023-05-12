@@ -6,4 +6,6 @@ pub struct PathAssistantSettings  {
 	pub can_override_auto_path_collapse_with_user_pref: Option<bool>,
 	#[serde(rename = "pathAssistantEnabled")]
 	pub path_assistant_enabled: Option<bool>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

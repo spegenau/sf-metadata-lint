@@ -28,4 +28,6 @@ pub struct DiscoveryGoal  {
 	pub subscribed_entity: Option<String>,
 	#[serde(rename = "terminalStateFilters")]
 	pub terminal_state_filters: Option<Vec<DiscoveryFilter>>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

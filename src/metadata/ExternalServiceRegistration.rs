@@ -36,4 +36,6 @@ pub struct ExternalServiceRegistration  {
 	pub status: String,
 	#[serde(rename = "systemVersion")]
 	pub system_version: Option<i32>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

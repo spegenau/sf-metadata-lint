@@ -21,4 +21,6 @@ pub struct ReportType  {
 	pub label: String,
 	#[serde(rename = "sections")]
 	pub sections: Option<Vec<ReportLayoutSection>>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

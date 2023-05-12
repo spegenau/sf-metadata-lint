@@ -92,4 +92,6 @@ pub struct LightningExperienceSettings  {
 	pub is_lex_extension_link_grabber_off: Option<bool>,
 	#[serde(rename = "isLEXExtensionOff")]
 	pub is_lex_extension_off: Option<bool>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

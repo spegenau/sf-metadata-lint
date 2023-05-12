@@ -26,4 +26,6 @@ pub struct BotVersion  {
 	pub nlp_providers: Option<Vec<ConversationDefinitionNlpProvider>>,
 	#[serde(rename = "responseDelayMilliseconds")]
 	pub response_delay_milliseconds: Option<i32>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

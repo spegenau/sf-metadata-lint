@@ -12,4 +12,6 @@ pub struct PlatformEventSubscriberConfig  {
 	pub platform_event_consumer: String,
 	#[serde(rename = "user")]
 	pub user: Option<String>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

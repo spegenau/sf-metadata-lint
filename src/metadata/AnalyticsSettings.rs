@@ -144,4 +144,6 @@ pub struct AnalyticsSettings  {
 	pub sonic_enabled: Option<bool>,
 	#[serde(rename = "turnOnTimeZones")]
 	pub turn_on_time_zones: Option<bool>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

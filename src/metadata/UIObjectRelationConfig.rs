@@ -28,4 +28,6 @@ pub struct UIObjectRelationConfig  {
 	pub related_object_record_type: Option<String>,
 	#[serde(rename = "relationshipType")]
 	pub relationship_type: ObjectRelationshipType,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

@@ -8,4 +8,6 @@ pub struct WebToXSettings  {
 	pub web_to_case_spam_filter: Option<bool>,
 	#[serde(rename = "webToLeadSpamFilter")]
 	pub web_to_lead_spam_filter: Option<bool>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

@@ -26,4 +26,6 @@ pub struct EmbeddedServiceBranding  {
 	pub secondary_nav_bar_color: Option<String>,
 	#[serde(rename = "width")]
 	pub width: Option<i32>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

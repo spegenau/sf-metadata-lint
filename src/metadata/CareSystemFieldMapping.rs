@@ -17,4 +17,6 @@ pub struct CareSystemFieldMapping  {
 	pub source_system: Option<String>,
 	#[serde(rename = "targetObject")]
 	pub target_object: Option<String>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

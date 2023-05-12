@@ -6,4 +6,6 @@ pub struct IdentityProviderSettings  {
 	pub certificate_name: String,
 	#[serde(rename = "enableIdentityProvider")]
 	pub enable_identity_provider: bool,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

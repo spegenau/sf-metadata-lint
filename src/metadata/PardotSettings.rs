@@ -20,4 +20,6 @@ pub struct PardotSettings  {
 	pub enable_pardot_object_sync: Option<bool>,
 	#[serde(rename = "enableProspectActivityDataset")]
 	pub enable_prospect_activity_dataset: Option<bool>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

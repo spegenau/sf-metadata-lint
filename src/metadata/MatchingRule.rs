@@ -14,4 +14,6 @@ pub struct MatchingRule  {
 	pub matching_rule_items: Option<Vec<MatchingRuleItem>>,
 	#[serde(rename = "ruleStatus")]
 	pub rule_status: MatchingRuleStatus,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

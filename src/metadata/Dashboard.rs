@@ -57,4 +57,6 @@ pub struct Dashboard  {
 	pub title_color: String,
 	#[serde(rename = "titleSize")]
 	pub title_size: i32,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

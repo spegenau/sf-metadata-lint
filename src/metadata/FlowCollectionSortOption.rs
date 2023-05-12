@@ -1,3 +1,4 @@
+use crate::metadata::FlowMetadataValue::FlowMetadataValue;
 use crate::metadata::SortOrder::SortOrder;
 use serde::{Deserialize};
 
@@ -9,4 +10,6 @@ pub struct FlowCollectionSortOption  {
 	pub sort_field: Option<String>,
 	#[serde(rename = "sortOrder")]
 	pub sort_order: SortOrder,
+	#[serde(rename = "processMetadataValues")]
+	pub process_metadata_values: Option<Vec<FlowMetadataValue>>,
 }

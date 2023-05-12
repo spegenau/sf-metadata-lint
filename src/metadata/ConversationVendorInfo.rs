@@ -59,4 +59,6 @@ pub struct ConversationVendorInfo  {
 	pub user_syncing_supported: Option<bool>,
 	#[serde(rename = "vendorType")]
 	pub vendor_type: Option<ConversationVendorType>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

@@ -94,4 +94,6 @@ pub struct Report  {
 	pub time_frame_filter: Option<ReportTimeFrameFilter>,
 	#[serde(rename = "userFilter")]
 	pub user_filter: Option<String>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

@@ -11,4 +11,6 @@ pub struct CareLimitType  {
 	pub master_label: String,
 	#[serde(rename = "metricType")]
 	pub metric_type: Option<CareLimitTypeMetricType>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

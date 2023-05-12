@@ -24,4 +24,6 @@ pub struct FieldRestrictionRule  {
 	pub user_criteria: String,
 	#[serde(rename = "version")]
 	pub version: i32,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

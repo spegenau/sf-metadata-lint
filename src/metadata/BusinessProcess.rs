@@ -9,4 +9,6 @@ pub struct BusinessProcess  {
 	pub is_active: Option<bool>,
 	#[serde(rename = "values")]
 	pub values: Option<Vec<PicklistValue>>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

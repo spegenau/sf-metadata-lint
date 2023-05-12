@@ -11,4 +11,6 @@ pub struct NavigationMenu  {
 	pub label: String,
 	#[serde(rename = "navigationMenuItem")]
 	pub navigation_menu_item: Option<Vec<NavigationMenuItem>>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

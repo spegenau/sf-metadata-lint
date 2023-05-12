@@ -25,4 +25,6 @@ pub struct RecordActionDeployment  {
 	pub recommendation: Option<RecordActionRecommendation>,
 	#[serde(rename = "selectableItems")]
 	pub selectable_items: Option<Vec<RecordActionSelectableItem>>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

@@ -29,4 +29,6 @@ pub struct CommunityTemplateDefinition  {
 	pub page_setting: Option<Vec<CommunityTemplatePageSetting>>,
 	#[serde(rename = "publisher")]
 	pub publisher: Option<String>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

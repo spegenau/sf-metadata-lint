@@ -9,4 +9,6 @@ pub struct FlowCategory  {
 	pub flow_category_items: Option<Vec<FlowCategoryItems>>,
 	#[serde(rename = "masterLabel")]
 	pub master_label: String,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

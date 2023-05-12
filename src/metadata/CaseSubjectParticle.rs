@@ -9,4 +9,6 @@ pub struct CaseSubjectParticle  {
 	pub text_field: Option<String>,
 	#[serde(rename = "type")]
 	pub _type: CaseSubjectParticleType,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

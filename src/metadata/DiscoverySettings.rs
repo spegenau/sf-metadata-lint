@@ -6,4 +6,6 @@ pub struct DiscoverySettings  {
 	pub enable_einstein_answers_pref: Option<bool>,
 	#[serde(rename = "enableEinsteinArticleRecommendations")]
 	pub enable_einstein_article_recommendations: Option<bool>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

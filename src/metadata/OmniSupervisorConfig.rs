@@ -24,4 +24,6 @@ pub struct OmniSupervisorConfig  {
 	pub omni_supervisor_config_skill: Option<Vec<OmniSupervisorConfigSkill>>,
 	#[serde(rename = "skillVisibility")]
 	pub skill_visibility: Option<OmniSuperSkillVisibilityType>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

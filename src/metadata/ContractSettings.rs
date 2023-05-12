@@ -14,4 +14,6 @@ pub struct ContractSettings  {
 	pub enable_contract_history_tracking: Option<bool>,
 	#[serde(rename = "notifyOwnersOnContractExpiration")]
 	pub notify_owners_on_contract_expiration: Option<bool>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

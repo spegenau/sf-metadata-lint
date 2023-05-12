@@ -11,4 +11,6 @@ pub struct LightningMessageChannel  {
 	pub lightning_message_fields: Option<Vec<LightningMessageField>>,
 	#[serde(rename = "masterLabel")]
 	pub master_label: String,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

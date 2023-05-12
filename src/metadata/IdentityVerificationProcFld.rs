@@ -27,4 +27,6 @@ pub struct IdentityVerificationProcFld  {
 	pub master_label: String,
 	#[serde(rename = "sequenceNumber")]
 	pub sequence_number: i32,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

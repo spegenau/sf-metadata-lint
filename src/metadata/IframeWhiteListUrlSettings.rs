@@ -5,4 +5,6 @@ use serde::{Deserialize};
 pub struct IframeWhiteListUrlSettings  {
 	#[serde(rename = "iframeWhiteListUrls")]
 	pub iframe_white_list_urls: Option<Vec<IframeWhiteListUrl>>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

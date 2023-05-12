@@ -19,4 +19,6 @@ pub struct EmbeddedServiceMenuSettings  {
 	pub master_label: Option<String>,
 	#[serde(rename = "site")]
 	pub site: Option<String>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

@@ -12,4 +12,6 @@ pub struct AIApplication  {
 	pub status: AIApplicationStatus,
 	#[serde(rename = "type")]
 	pub _type: AIApplicationType,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

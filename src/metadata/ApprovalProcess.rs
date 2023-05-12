@@ -51,4 +51,6 @@ pub struct ApprovalProcess  {
 	pub record_editability: RecordEditabilityType,
 	#[serde(rename = "showApprovalHistory")]
 	pub show_approval_history: Option<bool>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

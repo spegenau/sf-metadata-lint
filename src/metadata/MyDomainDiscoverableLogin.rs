@@ -8,4 +8,6 @@ pub struct MyDomainDiscoverableLogin  {
 	pub execute_apex_handler_as: Option<String>,
 	#[serde(rename = "usernameLabel")]
 	pub username_label: Option<String>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

@@ -58,4 +58,6 @@ pub struct WebStoreTemplate  {
 	pub supported_ship_to_countries: Option<String>,
 	#[serde(rename = "type")]
 	pub _type: WebStoreType,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

@@ -10,4 +10,6 @@ pub struct MobileSecurityAssignment  {
 	pub master_label: String,
 	#[serde(rename = "profile")]
 	pub profile: Option<String>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

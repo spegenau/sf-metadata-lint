@@ -13,4 +13,6 @@ pub struct Territory2Rule  {
 	pub object_type: String,
 	#[serde(rename = "ruleItems")]
 	pub rule_items: Option<Vec<Territory2RuleItem>>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

@@ -25,4 +25,6 @@ pub struct LightningComponentBundle  {
 	pub target_configs: Option<String>,
 	#[serde(rename = "targets")]
 	pub targets: Option<Targets>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

@@ -53,4 +53,6 @@ pub struct CustomApplication  {
 	pub utility_bar: Option<String>,
 	#[serde(rename = "workspaceConfig")]
 	pub workspace_config: Option<AppWorkspaceConfig>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

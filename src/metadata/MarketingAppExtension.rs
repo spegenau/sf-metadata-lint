@@ -16,4 +16,6 @@ pub struct MarketingAppExtension  {
 	pub marketing_app_ext_activities: Option<Vec<MarketingAppExtActivity>>,
 	#[serde(rename = "masterLabel")]
 	pub master_label: String,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

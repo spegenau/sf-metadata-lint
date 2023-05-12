@@ -8,4 +8,6 @@ pub struct Territory2Type  {
 	pub name: String,
 	#[serde(rename = "priority")]
 	pub priority: i32,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

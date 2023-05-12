@@ -15,4 +15,6 @@ pub struct SchedulingRule  {
 	pub scheduling_rule_parameters: Option<Vec<SchedulingRuleParameter>>,
 	#[serde(rename = "schedulingRuleType")]
 	pub scheduling_rule_type: SchedulingRuleType,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

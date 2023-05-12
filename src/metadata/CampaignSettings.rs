@@ -22,4 +22,6 @@ pub struct CampaignSettings  {
 	pub enable_ekai: Option<bool>,
 	#[serde(rename = "enableSuppressNoValueCI2")]
 	pub enable_suppress_no_value_ci_2: Option<bool>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

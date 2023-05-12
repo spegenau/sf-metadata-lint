@@ -56,4 +56,6 @@ pub struct SamlSsoConfig  {
 	pub user_provisioning: Option<bool>,
 	#[serde(rename = "validationCert")]
 	pub validation_cert: String,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

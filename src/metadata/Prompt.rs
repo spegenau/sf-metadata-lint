@@ -7,4 +7,6 @@ pub struct Prompt  {
 	pub master_label: String,
 	#[serde(rename = "promptVersions")]
 	pub prompt_versions: Option<Vec<PromptVersion>>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

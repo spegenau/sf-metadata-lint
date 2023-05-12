@@ -14,4 +14,6 @@ pub struct ReferencedDashboard  {
 	pub template_asset_source_name: Option<String>,
 	#[serde(rename = "visibility")]
 	pub visibility: String,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

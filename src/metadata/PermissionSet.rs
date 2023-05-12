@@ -49,4 +49,6 @@ pub struct PermissionSet  {
 	pub tab_settings: Option<Vec<PermissionSetTabSetting>>,
 	#[serde(rename = "userPermissions")]
 	pub user_permissions: Option<Vec<PermissionSetUserPermission>>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

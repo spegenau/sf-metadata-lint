@@ -10,4 +10,6 @@ pub struct AccountingSettings  {
 	pub enable_payment_method_adjust: Option<bool>,
 	#[serde(rename = "enableScheduledJob")]
 	pub enable_scheduled_job: Option<bool>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

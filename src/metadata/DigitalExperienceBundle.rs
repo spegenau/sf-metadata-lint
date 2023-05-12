@@ -9,4 +9,6 @@ pub struct DigitalExperienceBundle  {
 	pub label: String,
 	#[serde(rename = "spaceResources")]
 	pub space_resources: Option<Vec<DigitalExperience>>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

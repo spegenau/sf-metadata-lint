@@ -41,4 +41,6 @@ pub struct CMSConnectSource  {
 	pub _type: CMSConnectionSourceType,
 	#[serde(rename = "websiteUrl")]
 	pub website_url: Option<String>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

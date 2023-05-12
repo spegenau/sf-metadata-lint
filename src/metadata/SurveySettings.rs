@@ -8,4 +8,6 @@ pub struct SurveySettings  {
 	pub enable_survey: Option<bool>,
 	#[serde(rename = "enableSurveyOwnerCanManageResponse")]
 	pub enable_survey_owner_can_manage_response: Option<bool>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

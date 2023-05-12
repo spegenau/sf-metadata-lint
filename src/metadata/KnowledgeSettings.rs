@@ -52,4 +52,6 @@ pub struct KnowledgeSettings  {
 	pub suggested_articles: Option<KnowledgeSuggestedArticlesSettings>,
 	#[serde(rename = "votingEnabled")]
 	pub voting_enabled: Option<bool>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

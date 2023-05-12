@@ -6,4 +6,6 @@ pub struct InventorySettings  {
 	pub enable_ocib_2_c_integration: Option<bool>,
 	#[serde(rename = "enableOmniChannelInventory")]
 	pub enable_omni_channel_inventory: Option<bool>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

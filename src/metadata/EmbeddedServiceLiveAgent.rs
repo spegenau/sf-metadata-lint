@@ -43,4 +43,6 @@ pub struct EmbeddedServiceLiveAgent  {
 	pub small_company_logo_img: Option<String>,
 	#[serde(rename = "waitingStateBackgroundImg")]
 	pub waiting_state_background_img: Option<String>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

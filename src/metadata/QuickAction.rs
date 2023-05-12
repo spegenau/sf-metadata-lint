@@ -52,4 +52,6 @@ pub struct QuickAction  {
 	pub _type: QuickActionType,
 	#[serde(rename = "width")]
 	pub width: Option<i32>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

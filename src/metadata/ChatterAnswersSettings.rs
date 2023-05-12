@@ -26,4 +26,6 @@ pub struct ChatterAnswersSettings  {
 	pub facebook_auth_provider: Option<String>,
 	#[serde(rename = "showInPortals")]
 	pub show_in_portals: Option<bool>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

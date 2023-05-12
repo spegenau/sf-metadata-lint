@@ -24,4 +24,6 @@ pub struct ChannelObjectLinkingRule  {
 	pub object_to_link: ObjectToLink,
 	#[serde(rename = "ruleName")]
 	pub rule_name: String,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

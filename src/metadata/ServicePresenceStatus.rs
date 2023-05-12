@@ -7,4 +7,6 @@ pub struct ServicePresenceStatus  {
 	pub channels: Option<ServiceChannelStatus>,
 	#[serde(rename = "label")]
 	pub label: String,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

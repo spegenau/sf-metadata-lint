@@ -16,4 +16,6 @@ pub struct AccountRelationshipShareRule  {
 	pub static_formula_criteria: Option<String>,
 	#[serde(rename = "type")]
 	pub _type: String,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

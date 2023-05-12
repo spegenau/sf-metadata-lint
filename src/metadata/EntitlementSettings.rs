@@ -28,4 +28,6 @@ pub struct EntitlementSettings  {
 	pub entitlement_lookup_limited_to_same_contact: Option<bool>,
 	#[serde(rename = "ignoreMilestoneBusinessHours")]
 	pub ignore_milestone_business_hours: Option<bool>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

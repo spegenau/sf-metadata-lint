@@ -6,4 +6,6 @@ pub struct RecommendationBuilderSettings  {
 	pub enable_erb_enabled_pref: Option<bool>,
 	#[serde(rename = "enableErbStartedPref")]
 	pub enable_erb_started_pref: Option<bool>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

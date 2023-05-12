@@ -54,4 +54,6 @@ pub struct ActivitiesSettings  {
 	pub show_home_page_hover_links_for_events: Option<bool>,
 	#[serde(rename = "showMyTasksHoverLinks")]
 	pub show_my_tasks_hover_links: Option<bool>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

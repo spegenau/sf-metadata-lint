@@ -30,4 +30,6 @@ pub struct UserManagementSettings  {
 	pub psa_expiration_ui_enabled: Option<bool>,
 	#[serde(rename = "restrictedProfileCloning")]
 	pub restricted_profile_cloning: Option<bool>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

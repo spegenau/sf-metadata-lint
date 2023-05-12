@@ -8,4 +8,6 @@ pub struct SalesWorkQueueSettings  {
 	pub target_entity: String,
 	#[serde(rename = "targetField")]
 	pub target_field: String,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

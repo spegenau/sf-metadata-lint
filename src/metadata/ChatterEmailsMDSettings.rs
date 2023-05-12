@@ -22,4 +22,6 @@ pub struct ChatterEmailsMDSettings  {
 	pub no_qn_sub_notify_on_best_r: Option<bool>,
 	#[serde(rename = "noQnSubNotifyOnRep")]
 	pub no_qn_sub_notify_on_rep: Option<bool>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

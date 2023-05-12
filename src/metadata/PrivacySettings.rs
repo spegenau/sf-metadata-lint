@@ -22,4 +22,6 @@ pub struct PrivacySettings  {
 	pub enable_consent_event_stream: Option<bool>,
 	#[serde(rename = "enableDefaultMetadataValues")]
 	pub enable_default_metadata_values: Option<bool>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

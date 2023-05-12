@@ -44,4 +44,6 @@ pub struct ContentSettings  {
 	pub skip_content_asset_triggers: Option<bool>,
 	#[serde(rename = "skipContentAssetTriggersOnDeploy")]
 	pub skip_content_asset_triggers_on_deploy: Option<bool>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

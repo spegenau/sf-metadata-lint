@@ -15,4 +15,6 @@ pub struct SchedulingObjective  {
 	pub scheduling_objective_parameters: Option<Vec<SchedulingObjectiveParameter>>,
 	#[serde(rename = "schedulingObjectiveType")]
 	pub scheduling_objective_type: SchedulingObjectiveType,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

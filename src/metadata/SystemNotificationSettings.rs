@@ -6,4 +6,6 @@ pub struct SystemNotificationSettings  {
 	pub disable_downtime_notifications: Option<bool>,
 	#[serde(rename = "disableMaintenanceNotifications")]
 	pub disable_maintenance_notifications: Option<bool>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

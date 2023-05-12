@@ -12,4 +12,6 @@ pub struct ValidationRule  {
 	pub error_display_field: Option<String>,
 	#[serde(rename = "errorMessage")]
 	pub error_message: String,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

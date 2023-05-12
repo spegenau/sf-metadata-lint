@@ -50,4 +50,6 @@ pub struct FlowSettings  {
 	pub is_support_rollback_on_error_for_apex_invocable_actions_enabled: Option<bool>,
 	#[serde(rename = "isTimeResumedInSameRunContext")]
 	pub is_time_resumed_in_same_run_context: Option<bool>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

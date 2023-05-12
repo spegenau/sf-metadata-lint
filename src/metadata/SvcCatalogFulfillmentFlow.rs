@@ -15,4 +15,6 @@ pub struct SvcCatalogFulfillmentFlow  {
 	pub items: Option<Vec<SvcCatalogFulfillFlowItem>>,
 	#[serde(rename = "masterLabel")]
 	pub master_label: String,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

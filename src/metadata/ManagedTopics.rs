@@ -5,4 +5,6 @@ use serde::{Deserialize};
 pub struct ManagedTopics  {
 	#[serde(rename = "managedTopic")]
 	pub managed_topic: Option<Vec<ManagedTopic>>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

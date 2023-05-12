@@ -58,4 +58,6 @@ pub struct Layout  {
 	pub show_submit_and_attach_button: Option<bool>,
 	#[serde(rename = "summaryLayout")]
 	pub summary_layout: Option<SummaryLayout>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

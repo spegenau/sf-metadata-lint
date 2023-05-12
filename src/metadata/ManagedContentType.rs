@@ -11,4 +11,6 @@ pub struct ManagedContentType  {
 	pub managed_content_node_types: Option<Vec<ManagedContentNodeType>>,
 	#[serde(rename = "masterLabel")]
 	pub master_label: String,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

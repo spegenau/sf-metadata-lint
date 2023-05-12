@@ -10,4 +10,6 @@ pub struct LightningExperienceTheme  {
 	pub master_label: String,
 	#[serde(rename = "shouldOverrideLoadingImage")]
 	pub should_override_loading_image: Option<bool>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

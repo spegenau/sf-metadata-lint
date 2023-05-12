@@ -16,4 +16,6 @@ pub struct DelegateGroup  {
 	pub profiles: Option<Vec<String>>,
 	#[serde(rename = "roles")]
 	pub roles: Option<Vec<String>>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

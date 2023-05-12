@@ -16,4 +16,6 @@ pub struct LightningOnboardingConfig  {
 	pub prompt_delay_time: i32,
 	#[serde(rename = "sendFeedbackToSalesforce")]
 	pub send_feedback_to_salesforce: bool,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

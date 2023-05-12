@@ -12,4 +12,6 @@ pub struct SocialProfileSettings  {
 	pub is_twitter_social_profiles_disabled: Option<bool>,
 	#[serde(rename = "isYouTubeSocialProfilesDisabled")]
 	pub is_you_tube_social_profiles_disabled: Option<bool>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

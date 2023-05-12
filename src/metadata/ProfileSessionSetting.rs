@@ -17,4 +17,6 @@ pub struct ProfileSessionSetting  {
 	pub session_timeout: i32,
 	#[serde(rename = "sessionTimeoutWarning")]
 	pub session_timeout_warning: bool,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

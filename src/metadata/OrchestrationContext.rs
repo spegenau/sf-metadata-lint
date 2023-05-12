@@ -22,4 +22,6 @@ pub struct OrchestrationContext  {
 	pub salesforce_object: Option<String>,
 	#[serde(rename = "salesforceObjectPrimaryKey")]
 	pub salesforce_object_primary_key: Option<String>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

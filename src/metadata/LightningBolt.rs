@@ -20,4 +20,6 @@ pub struct LightningBolt  {
 	pub publisher: String,
 	#[serde(rename = "summary")]
 	pub summary: String,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

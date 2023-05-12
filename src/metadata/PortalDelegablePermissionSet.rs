@@ -10,4 +10,6 @@ pub struct PortalDelegablePermissionSet  {
 	pub permission_set: String,
 	#[serde(rename = "profile")]
 	pub profile: String,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

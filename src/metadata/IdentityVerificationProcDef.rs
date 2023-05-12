@@ -10,4 +10,6 @@ pub struct IdentityVerificationProcDef  {
 	pub master_label: String,
 	#[serde(rename = "searchLayoutType")]
 	pub search_layout_type: IdentityVerificationSearchLayoutType,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

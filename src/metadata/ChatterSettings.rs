@@ -32,4 +32,6 @@ pub struct ChatterSettings  {
 	pub enable_today_recs_in_feed: Option<bool>,
 	#[serde(rename = "unlistedGroupsEnabled")]
 	pub unlisted_groups_enabled: Option<bool>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

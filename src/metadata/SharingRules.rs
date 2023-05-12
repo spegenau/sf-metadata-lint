@@ -14,4 +14,6 @@ pub struct SharingRules  {
 	pub sharing_owner_rules: Option<Vec<SharingOwnerRule>>,
 	#[serde(rename = "sharingTerritoryRules")]
 	pub sharing_territory_rules: Option<Vec<SharingTerritoryRule>>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

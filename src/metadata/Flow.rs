@@ -120,4 +120,6 @@ pub struct Flow  {
 	pub variables: Option<Vec<FlowVariable>>,
 	#[serde(rename = "waits")]
 	pub waits: Option<Vec<FlowWait>>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

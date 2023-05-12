@@ -11,4 +11,6 @@ pub struct FlowTest  {
 	pub label: String,
 	#[serde(rename = "testPoints")]
 	pub test_points: Option<Vec<FlowTestPoint>>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

@@ -18,4 +18,6 @@ pub struct ActionPlanTemplate  {
 	pub target_entity_type: String,
 	#[serde(rename = "uniqueName")]
 	pub unique_name: String,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

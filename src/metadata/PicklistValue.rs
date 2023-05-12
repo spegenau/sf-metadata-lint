@@ -33,4 +33,6 @@ pub struct PicklistValue  {
 	pub reviewed: Option<bool>,
 	#[serde(rename = "won")]
 	pub won: Option<bool>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

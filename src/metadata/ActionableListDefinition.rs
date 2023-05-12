@@ -22,4 +22,6 @@ pub struct ActionableListDefinition  {
 	pub master_label: String,
 	#[serde(rename = "objectName")]
 	pub object_name: String,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

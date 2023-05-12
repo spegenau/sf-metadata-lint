@@ -8,4 +8,6 @@ pub struct PartyDataModelSettings  {
 	pub enable_consent_management: Option<bool>,
 	#[serde(rename = "enableIndividualAutoCreate")]
 	pub enable_individual_auto_create: Option<bool>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

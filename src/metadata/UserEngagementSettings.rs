@@ -60,4 +60,6 @@ pub struct UserEngagementSettings  {
 	pub is_smart_nudges_disabled: Option<bool>,
 	#[serde(rename = "optimizerAppEnabled")]
 	pub optimizer_app_enabled: Option<bool>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

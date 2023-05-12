@@ -20,4 +20,6 @@ pub struct GoogleAppsSettings  {
 	pub google_apps_domain_linked: Option<bool>,
 	#[serde(rename = "googleAppsDomainValidated")]
 	pub google_apps_domain_validated: Option<bool>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

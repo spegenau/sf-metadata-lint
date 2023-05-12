@@ -16,4 +16,6 @@ pub struct Queue  {
 	pub queue_routing_config: Option<String>,
 	#[serde(rename = "queueSobject")]
 	pub queue_sobject: Option<Vec<QueueSobject>>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

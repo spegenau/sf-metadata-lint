@@ -14,4 +14,6 @@ pub struct EmployeeUserSettings  {
 	pub profile: String,
 	#[serde(rename = "usernameSuffix")]
 	pub username_suffix: Option<String>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

@@ -19,4 +19,6 @@ pub struct AccountingFieldMapping  {
 	pub source_field: Option<String>,
 	#[serde(rename = "targetField")]
 	pub target_field: String,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

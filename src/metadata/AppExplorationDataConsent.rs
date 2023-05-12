@@ -16,4 +16,6 @@ pub struct AppExplorationDataConsent  {
 	pub master_label: String,
 	#[serde(rename = "projectName")]
 	pub project_name: Option<String>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

@@ -11,4 +11,6 @@ pub struct EventRelayConfig  {
 	pub relay_option: Option<String>,
 	#[serde(rename = "state")]
 	pub state: Option<EventRelayAdminState>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

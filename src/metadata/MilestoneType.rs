@@ -7,4 +7,6 @@ pub struct MilestoneType  {
 	pub description: Option<String>,
 	#[serde(rename = "recurrenceType")]
 	pub recurrence_type: Option<MilestoneTypeRecurrenceType>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

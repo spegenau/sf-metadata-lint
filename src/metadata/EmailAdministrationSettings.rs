@@ -46,4 +46,6 @@ pub struct EmailAdministrationSettings  {
 	pub send_mass_email_notification: Option<bool>,
 	#[serde(rename = "sendTextOnlySystemEmails")]
 	pub send_text_only_system_emails: Option<bool>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

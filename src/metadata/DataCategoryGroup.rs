@@ -14,4 +14,6 @@ pub struct DataCategoryGroup  {
 	pub label: String,
 	#[serde(rename = "objectUsage")]
 	pub object_usage: Option<ObjectUsage>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

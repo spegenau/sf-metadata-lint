@@ -23,4 +23,6 @@ pub struct ChatterExtension  {
 	pub render_component: String,
 	#[serde(rename = "type")]
 	pub _type: ChatterExtensionType,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

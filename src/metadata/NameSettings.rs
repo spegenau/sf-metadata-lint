@@ -8,4 +8,6 @@ pub struct NameSettings  {
 	pub enable_middle_name: Option<bool>,
 	#[serde(rename = "enableNameSuffix")]
 	pub enable_name_suffix: Option<bool>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

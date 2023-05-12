@@ -37,4 +37,6 @@ pub struct IdentityVerificationProcDtl  {
 	pub search_sequence_number: i32,
 	#[serde(rename = "searchType")]
 	pub search_type: IdentityVerificationSearchType,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

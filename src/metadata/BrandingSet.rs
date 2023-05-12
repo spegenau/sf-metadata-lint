@@ -11,4 +11,6 @@ pub struct BrandingSet  {
 	pub master_label: String,
 	#[serde(rename = "type")]
 	pub _type: Option<String>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

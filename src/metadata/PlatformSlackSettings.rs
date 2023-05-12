@@ -8,4 +8,6 @@ pub struct PlatformSlackSettings  {
 	pub enable_slack_service_alerts: Option<bool>,
 	#[serde(rename = "slackCapabilitiesEnabled")]
 	pub slack_capabilities_enabled: Option<bool>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

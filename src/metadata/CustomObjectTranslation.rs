@@ -43,4 +43,6 @@ pub struct CustomObjectTranslation  {
 	pub web_links: Option<Vec<WebLinkTranslation>>,
 	#[serde(rename = "workflowTasks")]
 	pub workflow_tasks: Option<Vec<WorkflowTaskTranslation>>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

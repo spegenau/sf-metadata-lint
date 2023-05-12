@@ -8,4 +8,6 @@ pub struct FlowDefinition  {
 	pub description: Option<String>,
 	#[serde(rename = "masterLabel")]
 	pub master_label: Option<String>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

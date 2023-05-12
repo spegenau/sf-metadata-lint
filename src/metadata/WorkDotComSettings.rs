@@ -30,4 +30,6 @@ pub struct WorkDotComSettings  {
 	pub enable_work_thanks_pref: Option<bool>,
 	#[serde(rename = "enableWorkUseObjectivesForGoals")]
 	pub enable_work_use_objectives_for_goals: Option<bool>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

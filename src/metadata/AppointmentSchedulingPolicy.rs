@@ -32,4 +32,6 @@ pub struct AppointmentSchedulingPolicy  {
 	pub should_use_primary_members: bool,
 	#[serde(rename = "shouldUseSecondaryMembers")]
 	pub should_use_secondary_members: bool,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

@@ -7,4 +7,6 @@ pub struct CompanySettings  {
 	pub enable_custom_fiscal_year: bool,
 	#[serde(rename = "fiscalYear")]
 	pub fiscal_year: Option<FiscalYearSettings>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

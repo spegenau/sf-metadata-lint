@@ -14,4 +14,6 @@ pub struct CallCenterRoutingMap  {
 	pub quick_connect: Option<String>,
 	#[serde(rename = "referenceRecord")]
 	pub reference_record: String,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

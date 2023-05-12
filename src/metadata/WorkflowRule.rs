@@ -24,4 +24,6 @@ pub struct WorkflowRule  {
 	pub trigger_type: WorkflowTriggerTypes,
 	#[serde(rename = "workflowTimeTriggers")]
 	pub workflow_time_triggers: Option<Vec<WorkflowTimeTrigger>>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

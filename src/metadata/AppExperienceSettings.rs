@@ -4,4 +4,6 @@ use serde::{Deserialize};
 pub struct AppExperienceSettings  {
 	#[serde(rename = "doesHideAllAppsInAppLauncher")]
 	pub does_hide_all_apps_in_app_launcher: Option<bool>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

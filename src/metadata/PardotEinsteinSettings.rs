@@ -6,4 +6,6 @@ pub struct PardotEinsteinSettings  {
 	pub enable_campaign_insight: Option<bool>,
 	#[serde(rename = "enableEngagementScore")]
 	pub enable_engagement_score: Option<bool>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

@@ -59,4 +59,6 @@ pub struct FieldServiceSettings  {
 	pub work_order_line_item_search_fields: Option<Vec<String>>,
 	#[serde(rename = "workOrderSearchFields")]
 	pub work_order_search_fields: Option<Vec<String>>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

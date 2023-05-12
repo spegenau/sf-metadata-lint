@@ -11,4 +11,6 @@ pub struct SharingSet  {
 	pub name: String,
 	#[serde(rename = "profiles")]
 	pub profiles: Option<Vec<String>>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

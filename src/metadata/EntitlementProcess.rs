@@ -36,4 +36,6 @@ pub struct EntitlementProcess  {
 	pub version_notes: Option<String>,
 	#[serde(rename = "versionNumber")]
 	pub version_number: Option<i32>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

@@ -27,4 +27,6 @@ pub struct MobileApplicationDetail  {
 	pub private_app: Option<bool>,
 	#[serde(rename = "version")]
 	pub version: String,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

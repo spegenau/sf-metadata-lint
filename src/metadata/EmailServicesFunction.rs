@@ -35,4 +35,6 @@ pub struct EmailServicesFunction  {
 	pub is_tls_required: Option<bool>,
 	#[serde(rename = "overLimitAction")]
 	pub over_limit_action: EmailServicesErrorAction,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

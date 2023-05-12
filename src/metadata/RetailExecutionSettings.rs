@@ -8,4 +8,6 @@ pub struct RetailExecutionSettings  {
 	pub enable_retail_execution: Option<bool>,
 	#[serde(rename = "enableVisitSharing")]
 	pub enable_visit_sharing: Option<bool>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

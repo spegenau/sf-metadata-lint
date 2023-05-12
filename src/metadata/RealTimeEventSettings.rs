@@ -5,4 +5,6 @@ use serde::{Deserialize};
 pub struct RealTimeEventSettings  {
 	#[serde(rename = "realTimeEvents")]
 	pub real_time_events: Option<Vec<RealTimeEvent>>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

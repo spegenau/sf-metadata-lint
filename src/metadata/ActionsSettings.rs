@@ -10,4 +10,6 @@ pub struct ActionsSettings  {
 	pub enable_offline_web_links: Option<bool>,
 	#[serde(rename = "enableThirdPartyActions")]
 	pub enable_third_party_actions: Option<bool>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

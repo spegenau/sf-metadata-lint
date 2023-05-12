@@ -6,4 +6,6 @@ pub struct EngagementMessagingSettings  {
 	pub is_engagement_messaging_complete: Option<bool>,
 	#[serde(rename = "isEngagementMessagingEnabled")]
 	pub is_engagement_messaging_enabled: Option<bool>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

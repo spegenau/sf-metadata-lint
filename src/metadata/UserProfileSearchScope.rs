@@ -6,4 +6,6 @@ pub struct UserProfileSearchScope  {
 	pub entity_api_names: Option<Vec<String>>,
 	#[serde(rename = "profile")]
 	pub profile: Option<String>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

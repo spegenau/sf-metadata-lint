@@ -8,4 +8,6 @@ pub struct RecordAlertCategory  {
 	pub master_label: String,
 	#[serde(rename = "severity")]
 	pub severity: Option<String>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

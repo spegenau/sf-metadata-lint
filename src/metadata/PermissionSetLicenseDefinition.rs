@@ -14,4 +14,6 @@ pub struct PermissionSetLicenseDefinition  {
 	pub license_expiration_policy: LicenseExpirationPolicy,
 	#[serde(rename = "userLicenseRestrictions")]
 	pub user_license_restrictions: Option<String>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

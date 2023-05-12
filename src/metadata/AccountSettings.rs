@@ -18,4 +18,6 @@ pub struct AccountSettings  {
 	pub enable_relate_contact_to_multiple_accounts: Option<bool>,
 	#[serde(rename = "showViewHierarchyLink")]
 	pub show_view_hierarchy_link: Option<bool>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

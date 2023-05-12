@@ -15,4 +15,6 @@ pub struct CareProviderSearchConfig  {
 	pub source_field: Option<String>,
 	#[serde(rename = "targetField")]
 	pub target_field: Option<String>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

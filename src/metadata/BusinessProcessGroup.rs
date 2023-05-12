@@ -12,4 +12,6 @@ pub struct BusinessProcessGroup  {
 	pub description: Option<String>,
 	#[serde(rename = "masterLabel")]
 	pub master_label: String,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

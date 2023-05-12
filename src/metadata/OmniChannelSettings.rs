@@ -10,4 +10,6 @@ pub struct OmniChannelSettings  {
 	pub enable_omni_secondary_routing_priority: Option<bool>,
 	#[serde(rename = "enableOmniSkillsRouting")]
 	pub enable_omni_skills_routing: Option<bool>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

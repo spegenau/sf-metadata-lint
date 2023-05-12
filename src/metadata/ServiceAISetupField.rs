@@ -15,4 +15,6 @@ pub struct ServiceAISetupField  {
 	pub name: String,
 	#[serde(rename = "setupDefinition")]
 	pub setup_definition: String,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

@@ -20,4 +20,6 @@ pub struct LanguageSettings  {
 	pub enable_translation_workbench: Option<bool>,
 	#[serde(rename = "useLanguageFallback")]
 	pub use_language_fallback: Option<bool>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

@@ -21,4 +21,6 @@ pub struct ForecastingFilterCondition  {
 	pub sort_order: i32,
 	#[serde(rename = "value")]
 	pub value: Option<String>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

@@ -22,4 +22,6 @@ pub struct VoiceSettings  {
 	pub enable_voice_mail: Option<bool>,
 	#[serde(rename = "enableVoiceMailDrop")]
 	pub enable_voice_mail_drop: Option<bool>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

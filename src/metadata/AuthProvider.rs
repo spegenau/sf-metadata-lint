@@ -58,4 +58,6 @@ pub struct AuthProvider  {
 	pub token_url: Option<String>,
 	#[serde(rename = "userInfoUrl")]
 	pub user_info_url: Option<String>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

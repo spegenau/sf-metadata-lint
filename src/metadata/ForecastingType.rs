@@ -22,4 +22,6 @@ pub struct ForecastingType  {
 	pub role_type: String,
 	#[serde(rename = "territory2Model")]
 	pub territory_2_model: Option<String>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

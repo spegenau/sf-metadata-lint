@@ -17,4 +17,6 @@ pub struct ActionLinkGroupTemplate  {
 	pub is_published: bool,
 	#[serde(rename = "name")]
 	pub name: String,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

@@ -12,4 +12,6 @@ pub struct MlDomain  {
 	pub ml_intents: Option<Vec<MlIntent>>,
 	#[serde(rename = "mlSlotClasses")]
 	pub ml_slot_classes: Option<Vec<MlSlotClass>>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

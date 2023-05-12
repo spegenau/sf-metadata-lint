@@ -11,4 +11,6 @@ pub struct CustomMetadata  {
 	pub protected: Option<bool>,
 	#[serde(rename = "values")]
 	pub values: Option<Vec<CustomMetadataValue>>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

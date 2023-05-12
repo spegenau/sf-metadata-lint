@@ -1,4 +1,5 @@
 use crate::metadata::FlowElementReferenceOrValue::FlowElementReferenceOrValue;
+use crate::metadata::FlowMetadataValue::FlowMetadataValue;
 use crate::metadata::FlowRecordFilterOperator::FlowRecordFilterOperator;
 use serde::{Deserialize};
 
@@ -10,4 +11,6 @@ pub struct FlowRecordFilter  {
 	pub operator: FlowRecordFilterOperator,
 	#[serde(rename = "value")]
 	pub value: Option<FlowElementReferenceOrValue>,
+	#[serde(rename = "processMetadataValues")]
+	pub process_metadata_values: Option<Vec<FlowMetadataValue>>,
 }

@@ -10,4 +10,6 @@ pub struct InstalledPackage  {
 	pub security_type: Option<String>,
 	#[serde(rename = "versionNumber")]
 	pub version_number: String,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

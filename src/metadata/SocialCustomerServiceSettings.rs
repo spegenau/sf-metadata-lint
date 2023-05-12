@@ -21,4 +21,6 @@ pub struct SocialCustomerServiceSettings  {
 	pub enable_social_post_history_tracking: Option<bool>,
 	#[serde(rename = "enableSocialReceiveParentPost")]
 	pub enable_social_receive_parent_post: Option<bool>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

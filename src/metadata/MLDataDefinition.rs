@@ -25,4 +25,6 @@ pub struct MLDataDefinition  {
 	pub training_filter: Option<MLFilter>,
 	#[serde(rename = "type")]
 	pub _type: MLDataDefinitionType,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

@@ -1,4 +1,5 @@
 use crate::metadata::FlowCondition::FlowCondition;
+use crate::metadata::FlowMetadataValue::FlowMetadataValue;
 use crate::metadata::FlowScreenRuleAction::FlowScreenRuleAction;
 use serde::{Deserialize};
 
@@ -12,4 +13,6 @@ pub struct FlowScreenRule  {
 	pub label: String,
 	#[serde(rename = "ruleActions")]
 	pub rule_actions: Option<Vec<FlowScreenRuleAction>>,
+	#[serde(rename = "processMetadataValues")]
+	pub process_metadata_values: Option<Vec<FlowMetadataValue>>,
 }

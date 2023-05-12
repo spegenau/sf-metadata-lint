@@ -25,4 +25,6 @@ pub struct MessagingChannel  {
 	pub session_handler_type: MessagingSessionHandlerType,
 	#[serde(rename = "standardParameters")]
 	pub standard_parameters: Option<Vec<MessagingChannelStandardParameter>>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

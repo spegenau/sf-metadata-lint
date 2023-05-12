@@ -12,4 +12,6 @@ pub struct ExperienceBundle  {
 	pub _type: SiteType,
 	#[serde(rename = "urlPathPrefix")]
 	pub url_path_prefix: Option<String>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

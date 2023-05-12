@@ -11,4 +11,6 @@ pub struct PipelineInspMetricConfig  {
 	pub master_label: String,
 	#[serde(rename = "metric")]
 	pub metric: PipelineInspectionMetric,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

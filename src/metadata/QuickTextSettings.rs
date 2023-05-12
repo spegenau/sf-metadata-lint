@@ -8,4 +8,6 @@ pub struct QuickTextSettings  {
 	pub lightning_quick_text_enabled: Option<bool>,
 	#[serde(rename = "quickTextsInFolders")]
 	pub quick_texts_in_folders: Option<bool>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

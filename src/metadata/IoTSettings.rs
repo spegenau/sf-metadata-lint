@@ -8,4 +8,6 @@ pub struct IoTSettings  {
 	pub enable_io_t_insights_pilot: Option<bool>,
 	#[serde(rename = "enableIoTUsageEmail")]
 	pub enable_io_t_usage_email: Option<bool>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

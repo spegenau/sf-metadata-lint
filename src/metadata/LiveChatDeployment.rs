@@ -25,4 +25,6 @@ pub struct LiveChatDeployment  {
 	pub site: Option<String>,
 	#[serde(rename = "windowTitle")]
 	pub window_title: String,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

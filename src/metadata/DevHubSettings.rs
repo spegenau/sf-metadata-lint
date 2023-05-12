@@ -14,4 +14,6 @@ pub struct DevHubSettings  {
 	pub enable_scratch_org_management_pref: Option<bool>,
 	#[serde(rename = "enableShapeExportPref")]
 	pub enable_shape_export_pref: Option<bool>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

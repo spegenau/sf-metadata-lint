@@ -11,4 +11,6 @@ pub struct ParticipantRole  {
 	pub master_label: String,
 	#[serde(rename = "parentObject")]
 	pub parent_object: String,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

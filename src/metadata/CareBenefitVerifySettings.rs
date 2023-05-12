@@ -22,4 +22,6 @@ pub struct CareBenefitVerifySettings  {
 	pub service_type_source_system: Option<String>,
 	#[serde(rename = "uriPath")]
 	pub uri_path: Option<String>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

@@ -17,4 +17,6 @@ pub struct ServiceChannel  {
 	pub secondary_routing_priority_field: Option<String>,
 	#[serde(rename = "serviceChannelFieldPriorities")]
 	pub service_channel_field_priorities: Option<Vec<ServiceChannelFieldPriority>>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

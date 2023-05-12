@@ -17,4 +17,6 @@ pub struct InboundNetworkConnection  {
 	pub label: String,
 	#[serde(rename = "status")]
 	pub status: ExternalConnectionStatus,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

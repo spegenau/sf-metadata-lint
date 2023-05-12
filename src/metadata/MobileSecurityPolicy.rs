@@ -26,4 +26,6 @@ pub struct MobileSecurityPolicy  {
 	pub severity_level: MobileSecurityPolicySeverityLevel,
 	#[serde(rename = "type")]
 	pub _type: MobileSecurityPolicyType,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

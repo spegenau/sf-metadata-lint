@@ -11,4 +11,6 @@ pub struct RelationshipGraphDefinition  {
 	pub master_label: String,
 	#[serde(rename = "relationshipGraphDefVersions")]
 	pub relationship_graph_def_versions: Option<Vec<RelationshipGraphDefVersion>>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

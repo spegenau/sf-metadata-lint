@@ -65,4 +65,6 @@ pub struct Profile  {
 	pub user_license: Option<String>,
 	#[serde(rename = "userPermissions")]
 	pub user_permissions: Option<Vec<ProfileUserPermission>>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

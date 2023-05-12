@@ -27,4 +27,6 @@ pub struct OmniUiCard  {
 	pub styling_configuration: Option<String>,
 	#[serde(rename = "versionNumber")]
 	pub version_number: String,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

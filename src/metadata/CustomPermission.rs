@@ -13,4 +13,6 @@ pub struct CustomPermission  {
 	pub label: String,
 	#[serde(rename = "requiredPermission")]
 	pub required_permission: Option<Vec<CustomPermissionDependencyRequired>>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

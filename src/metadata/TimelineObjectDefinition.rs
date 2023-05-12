@@ -10,4 +10,6 @@ pub struct TimelineObjectDefinition  {
 	pub is_active: Option<bool>,
 	#[serde(rename = "masterLabel")]
 	pub master_label: String,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

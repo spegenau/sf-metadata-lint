@@ -1,4 +1,5 @@
 use crate::metadata::FlowElementReferenceOrValue::FlowElementReferenceOrValue;
+use crate::metadata::FlowMetadataValue::FlowMetadataValue;
 use crate::metadata::FlowStageStepAssigneeType::FlowStageStepAssigneeType;
 use serde::{Deserialize};
 
@@ -8,4 +9,6 @@ pub struct FlowStageStepAssignee  {
 	pub assignee: FlowElementReferenceOrValue,
 	#[serde(rename = "assigneeType")]
 	pub assignee_type: FlowStageStepAssigneeType,
+	#[serde(rename = "processMetadataValues")]
+	pub process_metadata_values: Option<Vec<FlowMetadataValue>>,
 }

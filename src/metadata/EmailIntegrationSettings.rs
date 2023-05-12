@@ -30,4 +30,6 @@ pub struct EmailIntegrationSettings  {
 	pub org_is_syncing_events_outbound: Option<bool>,
 	#[serde(rename = "shouldUseTrustedDomainsList")]
 	pub should_use_trusted_domains_list: Option<bool>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

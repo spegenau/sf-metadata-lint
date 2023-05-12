@@ -9,4 +9,6 @@ pub struct Territory2Model  {
 	pub description: Option<String>,
 	#[serde(rename = "name")]
 	pub name: String,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

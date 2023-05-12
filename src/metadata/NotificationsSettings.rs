@@ -8,4 +8,6 @@ pub struct NotificationsSettings  {
 	pub enable_mobile_app_push_notifications: Option<bool>,
 	#[serde(rename = "enableNotifications")]
 	pub enable_notifications: Option<bool>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

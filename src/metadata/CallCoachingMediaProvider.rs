@@ -8,4 +8,6 @@ pub struct CallCoachingMediaProvider  {
 	pub provider_description: String,
 	#[serde(rename = "providerName")]
 	pub provider_name: String,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

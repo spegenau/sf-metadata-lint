@@ -24,4 +24,6 @@ pub struct Letterhead  {
 	pub name: String,
 	#[serde(rename = "topLine")]
 	pub top_line: LetterheadLine,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

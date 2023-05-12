@@ -26,4 +26,6 @@ pub struct QueueRoutingConfig  {
 	pub skills: Option<Vec<QueueRoutingConfigSkill>>,
 	#[serde(rename = "userOverflowAssignee")]
 	pub user_overflow_assignee: Option<String>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

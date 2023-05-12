@@ -27,4 +27,6 @@ pub struct LicenseDefinition  {
 	pub trial_license_duration: i32,
 	#[serde(rename = "trialLicenseQuantity")]
 	pub trial_license_quantity: i32,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

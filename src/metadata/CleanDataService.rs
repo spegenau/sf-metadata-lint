@@ -11,4 +11,6 @@ pub struct CleanDataService  {
 	pub master_label: String,
 	#[serde(rename = "matchEngine")]
 	pub match_engine: String,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

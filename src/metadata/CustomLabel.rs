@@ -12,4 +12,6 @@ pub struct CustomLabel  {
 	pub short_description: String,
 	#[serde(rename = "value")]
 	pub value: String,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

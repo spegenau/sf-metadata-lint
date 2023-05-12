@@ -65,4 +65,6 @@ pub struct LiveChatAgentConfig  {
 	pub transferable_buttons: Option<AgentConfigButtons>,
 	#[serde(rename = "transferableSkills")]
 	pub transferable_skills: Option<AgentConfigSkills>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

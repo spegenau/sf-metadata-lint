@@ -17,4 +17,6 @@ pub struct WaveApplication  {
 	pub template_origin: Option<String>,
 	#[serde(rename = "templateVersion")]
 	pub template_version: Option<String>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

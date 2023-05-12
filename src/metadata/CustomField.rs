@@ -133,4 +133,6 @@ pub struct CustomField  {
 	pub visible_lines: Option<i32>,
 	#[serde(rename = "writeRequiresMasterRead")]
 	pub write_requires_master_read: Option<bool>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

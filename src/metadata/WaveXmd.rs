@@ -28,4 +28,6 @@ pub struct WaveXmd  {
 	pub _type: Option<String>,
 	#[serde(rename = "waveVisualization")]
 	pub wave_visualization: Option<String>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

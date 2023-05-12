@@ -21,4 +21,6 @@ pub struct TimeSheetTemplate  {
 	pub work_week_end_day: DaysOfWeek,
 	#[serde(rename = "workWeekStartDay")]
 	pub work_week_start_day: DaysOfWeek,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

@@ -14,4 +14,6 @@ pub struct CampaignInfluenceModel  {
 	pub name: String,
 	#[serde(rename = "recordPreference")]
 	pub record_preference: Option<String>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

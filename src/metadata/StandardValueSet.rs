@@ -9,4 +9,6 @@ pub struct StandardValueSet  {
 	pub sorted: bool,
 	#[serde(rename = "standardValue")]
 	pub standard_value: Option<Vec<StandardValue>>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

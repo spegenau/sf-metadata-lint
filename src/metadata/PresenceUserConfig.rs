@@ -25,4 +25,6 @@ pub struct PresenceUserConfig  {
 	pub presence_status_on_decline: Option<String>,
 	#[serde(rename = "presenceStatusOnPushTimeout")]
 	pub presence_status_on_push_timeout: Option<String>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

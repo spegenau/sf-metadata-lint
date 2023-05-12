@@ -6,4 +6,6 @@ pub struct CompactLayout  {
 	pub fields: Option<Vec<String>>,
 	#[serde(rename = "label")]
 	pub label: String,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

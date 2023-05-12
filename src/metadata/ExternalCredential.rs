@@ -12,4 +12,6 @@ pub struct ExternalCredential  {
 	pub external_credential_parameters: Option<Vec<ExternalCredentialParameter>>,
 	#[serde(rename = "label")]
 	pub label: String,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

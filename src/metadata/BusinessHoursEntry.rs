@@ -38,4 +38,6 @@ pub struct BusinessHoursEntry  {
 	pub wednesday_end_time: Option<String>,
 	#[serde(rename = "wednesdayStartTime")]
 	pub wednesday_start_time: Option<String>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

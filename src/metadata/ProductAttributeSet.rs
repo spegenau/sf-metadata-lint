@@ -11,4 +11,6 @@ pub struct ProductAttributeSet  {
 	pub master_label: String,
 	#[serde(rename = "productAttributeSetItems")]
 	pub product_attribute_set_items: Option<Vec<ProductAttributeSetItem>>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

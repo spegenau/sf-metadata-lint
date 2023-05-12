@@ -36,4 +36,6 @@ pub struct CustomTab  {
 	pub url: Option<String>,
 	#[serde(rename = "urlEncodingKey")]
 	pub url_encoding_key: Option<Encoding>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

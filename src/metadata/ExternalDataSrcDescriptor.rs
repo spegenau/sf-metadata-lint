@@ -20,4 +20,6 @@ pub struct ExternalDataSrcDescriptor  {
 	pub system_version: i32,
 	#[serde(rename = "type")]
 	pub _type: ExternalDataSrcDescType,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

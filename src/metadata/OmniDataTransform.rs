@@ -86,4 +86,6 @@ pub struct OmniDataTransform  {
 	pub xml_declaration_removed: Option<bool>,
 	#[serde(rename = "xmlOutputTagsOrder")]
 	pub xml_output_tags_order: Option<String>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

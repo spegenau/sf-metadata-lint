@@ -20,4 +20,6 @@ pub struct ForecastingSourceDefinition  {
 	pub territory_2_field: Option<String>,
 	#[serde(rename = "userField")]
 	pub user_field: Option<String>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

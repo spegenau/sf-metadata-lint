@@ -7,4 +7,6 @@ pub struct AutoResponseRule  {
 	pub active: Option<bool>,
 	#[serde(rename = "ruleEntry")]
 	pub rule_entry: Option<Vec<RuleEntry>>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

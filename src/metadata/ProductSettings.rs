@@ -10,4 +10,6 @@ pub struct ProductSettings  {
 	pub enable_quantity_schedule: Option<bool>,
 	#[serde(rename = "enableRevenueSchedule")]
 	pub enable_revenue_schedule: Option<bool>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

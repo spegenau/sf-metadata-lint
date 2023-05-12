@@ -35,4 +35,6 @@ pub struct AuraDefinitionBundle  {
 	pub testsuite_content: Option<String>,
 	#[serde(rename = "type")]
 	pub _type: Option<AuraBundleType>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

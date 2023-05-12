@@ -34,4 +34,6 @@ pub struct TransactionSecurityPolicy  {
 	pub resource_name: Option<String>,
 	#[serde(rename = "type")]
 	pub _type: Option<TxnSecurityPolicyType>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

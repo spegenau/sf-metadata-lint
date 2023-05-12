@@ -10,4 +10,6 @@ pub struct LeadConvertSettings  {
 	pub object_mapping: Option<Vec<ObjectMapping>>,
 	#[serde(rename = "opportunityCreationOptions")]
 	pub opportunity_creation_options: Option<VisibleOrRequired>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

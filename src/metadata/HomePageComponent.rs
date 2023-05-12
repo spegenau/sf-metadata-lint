@@ -20,4 +20,6 @@ pub struct HomePageComponent  {
 	pub show_scrollbars: Option<bool>,
 	#[serde(rename = "width")]
 	pub width: Option<PageComponentWidth>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

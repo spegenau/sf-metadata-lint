@@ -45,4 +45,6 @@ pub struct ExternalDataSource  {
 	pub username: Option<String>,
 	#[serde(rename = "version")]
 	pub version: Option<String>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

@@ -6,4 +6,6 @@ pub struct BlockchainSettings  {
 	pub enable_bcp: Option<bool>,
 	#[serde(rename = "enableEtpNft")]
 	pub enable_etp_nft: Option<bool>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

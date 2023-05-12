@@ -7,4 +7,6 @@ pub struct CustomHelpMenuSection  {
 	pub custom_help_menu_items: Option<Vec<CustomHelpMenuItem>>,
 	#[serde(rename = "masterLabel")]
 	pub master_label: String,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

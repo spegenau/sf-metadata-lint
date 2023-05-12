@@ -41,4 +41,6 @@ pub struct Translations  {
 	pub report_types: Option<Vec<ReportTypeTranslation>>,
 	#[serde(rename = "scontrols")]
 	pub scontrols: Option<Vec<ScontrolTranslation>>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

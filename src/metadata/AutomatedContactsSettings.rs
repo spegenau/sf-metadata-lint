@@ -10,4 +10,6 @@ pub struct AutomatedContactsSettings  {
 	pub enable_add_contact_role_with_suggestion: Option<bool>,
 	#[serde(rename = "enableAddContactWithSuggestion")]
 	pub enable_add_contact_with_suggestion: Option<bool>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

@@ -34,4 +34,6 @@ pub struct ApexSettings  {
 	pub enable_restrict_community_exec_anon: Option<bool>,
 	#[serde(rename = "enableSecureNoArgConstructorPref")]
 	pub enable_secure_no_arg_constructor_pref: Option<bool>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

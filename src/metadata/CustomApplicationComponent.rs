@@ -22,4 +22,6 @@ pub struct CustomApplicationComponent  {
 	pub visualforce_page: String,
 	#[serde(rename = "width")]
 	pub width: Option<i32>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

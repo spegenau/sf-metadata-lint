@@ -8,4 +8,6 @@ pub struct BusinessHoursSettings  {
 	pub business_hours: Option<Vec<BusinessHoursEntry>>,
 	#[serde(rename = "holidays")]
 	pub holidays: Option<Vec<Holiday>>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

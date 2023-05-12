@@ -14,4 +14,6 @@ pub struct CustomNotificationType  {
 	pub mobile: bool,
 	#[serde(rename = "slack")]
 	pub slack: Option<bool>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

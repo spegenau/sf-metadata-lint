@@ -20,4 +20,6 @@ pub struct AnimationRule  {
 	pub target_field: String,
 	#[serde(rename = "targetFieldChangeToValues")]
 	pub target_field_change_to_values: String,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

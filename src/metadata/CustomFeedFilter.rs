@@ -11,4 +11,6 @@ pub struct CustomFeedFilter  {
 	pub is_protected: Option<bool>,
 	#[serde(rename = "label")]
 	pub label: String,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

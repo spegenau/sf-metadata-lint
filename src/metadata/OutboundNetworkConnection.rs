@@ -17,4 +17,6 @@ pub struct OutboundNetworkConnection  {
 	pub outbound_network_conn_properties: Option<Vec<OutboundNetworkConnProperty>>,
 	#[serde(rename = "status")]
 	pub status: ExternalConnectionStatus,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

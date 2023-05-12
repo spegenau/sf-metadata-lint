@@ -24,4 +24,6 @@ pub struct ForecastingSettings  {
 	pub global_forecast_range_settings: ForecastRangeSettings,
 	#[serde(rename = "globalQuotasSettings")]
 	pub global_quotas_settings: QuotasSettings,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

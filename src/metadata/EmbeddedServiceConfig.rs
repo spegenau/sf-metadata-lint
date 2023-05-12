@@ -44,4 +44,6 @@ pub struct EmbeddedServiceConfig  {
 	pub should_hide_auth_dialog: Option<bool>,
 	#[serde(rename = "site")]
 	pub site: Option<String>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

@@ -26,4 +26,6 @@ pub struct Territory2Settings  {
 	pub tm_2_bypass_realign_acc_insert: Option<bool>,
 	#[serde(rename = "tm2EnableUserAssignmentLog")]
 	pub tm_2_enable_user_assignment_log: Option<bool>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

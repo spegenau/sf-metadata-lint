@@ -5,4 +5,6 @@ use serde::{Deserialize};
 pub struct AutoResponseRules  {
 	#[serde(rename = "autoResponseRule")]
 	pub auto_response_rule: Option<Vec<AutoResponseRule>>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

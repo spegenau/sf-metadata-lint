@@ -8,4 +8,6 @@ pub struct EinsteinAssistantSettings  {
 	pub enable_einstein_assistant_enabled: Option<bool>,
 	#[serde(rename = "enableEinsteinEnableVoiceLogging")]
 	pub enable_einstein_enable_voice_logging: Option<bool>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

@@ -15,4 +15,6 @@ pub struct PathAssistant  {
 	pub path_assistant_steps: Option<Vec<PathAssistantStep>>,
 	#[serde(rename = "recordTypeName")]
 	pub record_type_name: String,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

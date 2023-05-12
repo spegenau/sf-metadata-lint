@@ -37,4 +37,6 @@ pub struct BotTemplate  {
 	pub ml_domain: Option<LocalMlDomain>,
 	#[serde(rename = "richContentEnabled")]
 	pub rich_content_enabled: Option<bool>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

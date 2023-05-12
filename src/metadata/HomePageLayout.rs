@@ -6,4 +6,6 @@ pub struct HomePageLayout  {
 	pub narrow_components: Option<Vec<String>>,
 	#[serde(rename = "wideComponents")]
 	pub wide_components: Option<Vec<String>>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

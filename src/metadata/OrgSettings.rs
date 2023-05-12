@@ -16,4 +16,6 @@ pub struct OrgSettings  {
 	pub enable_ra_deployment_attribute_only: Option<bool>,
 	#[serde(rename = "enableResetDivisionOnLogin")]
 	pub enable_reset_division_on_login: Option<bool>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

@@ -40,4 +40,6 @@ pub struct UserInterfaceSettings  {
 	pub enable_related_list_hovers: Option<bool>,
 	#[serde(rename = "enableTabOrganizer")]
 	pub enable_tab_organizer: Option<bool>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

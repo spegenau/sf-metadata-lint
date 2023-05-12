@@ -19,4 +19,6 @@ pub struct CommandAction  {
 	pub response_templates: Option<Vec<CommandActionResponse>>,
 	#[serde(rename = "target")]
 	pub target: Option<String>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

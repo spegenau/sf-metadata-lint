@@ -20,4 +20,6 @@ pub struct ServiceCloudVoiceSettings  {
 	pub enable_service_cloud_voice: Option<bool>,
 	#[serde(rename = "enableVoiceInGovCloudOptIn")]
 	pub enable_voice_in_gov_cloud_opt_in: Option<bool>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

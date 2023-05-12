@@ -24,4 +24,6 @@ pub struct UserProvisioningConfig  {
 	pub recon_filter: Option<String>,
 	#[serde(rename = "userAccountMapping")]
 	pub user_account_mapping: Option<String>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

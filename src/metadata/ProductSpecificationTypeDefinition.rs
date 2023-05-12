@@ -8,4 +8,6 @@ pub struct ProductSpecificationTypeDefinition  {
 	pub master_label: String,
 	#[serde(rename = "recordType")]
 	pub record_type: String,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

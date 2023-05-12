@@ -21,4 +21,6 @@ pub struct BotBlockVersion  {
 	pub ml_domain: LocalMlDomain,
 	#[serde(rename = "status")]
 	pub status: ConvDefBlockVersionStatus,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

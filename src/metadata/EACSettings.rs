@@ -34,4 +34,6 @@ pub struct EACSettings  {
 	pub sensitive_email_filter: Option<bool>,
 	#[serde(rename = "syncInternalEvents")]
 	pub sync_internal_events: Option<bool>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

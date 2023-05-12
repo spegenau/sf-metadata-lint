@@ -20,4 +20,6 @@ pub struct ActionLauncherItemDef  {
 	pub _type: String,
 	#[serde(rename = "versionNumber")]
 	pub version_number: String,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

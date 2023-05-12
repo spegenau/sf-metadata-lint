@@ -27,4 +27,6 @@ pub struct Territory2  {
 	pub rule_associations: Option<Vec<Territory2RuleAssociation>>,
 	#[serde(rename = "territory2Type")]
 	pub territory_2_type: String,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

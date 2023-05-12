@@ -25,4 +25,6 @@ pub struct CspTrustedSite  {
 	pub is_applicable_to_style_src: Option<bool>,
 	#[serde(rename = "mobileExtension")]
 	pub mobile_extension: Option<String>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

@@ -15,4 +15,6 @@ pub struct ChannelLayout  {
 	pub layout_items: Option<Vec<ChannelLayoutItem>>,
 	#[serde(rename = "recordType")]
 	pub record_type: Option<String>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

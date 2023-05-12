@@ -16,4 +16,6 @@ pub struct IndustriesLoyaltySettings  {
 	pub enable_nqp_real_time_point_balance: Option<bool>,
 	#[serde(rename = "enableQPRealTimePointBalance")]
 	pub enable_qp_real_time_point_balance: Option<bool>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

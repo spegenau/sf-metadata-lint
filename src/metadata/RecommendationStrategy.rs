@@ -42,4 +42,6 @@ pub struct RecommendationStrategy  {
 	pub sort: Option<Vec<StrategyNodeSort>>,
 	#[serde(rename = "union")]
 	pub union: Option<Vec<StrategyNodeUnion>>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

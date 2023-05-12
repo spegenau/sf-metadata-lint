@@ -25,4 +25,6 @@ pub struct RelatedRecordAssocCriteria  {
 	pub selected_owner_field: Option<String>,
 	#[serde(rename = "status")]
 	pub status: AssociationStatusType,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

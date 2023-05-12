@@ -5,4 +5,6 @@ use serde::{Deserialize};
 pub struct NotificationTypeConfig  {
 	#[serde(rename = "notificationTypeSettings")]
 	pub notification_type_settings: Option<Vec<NotificationTypeSettings>>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

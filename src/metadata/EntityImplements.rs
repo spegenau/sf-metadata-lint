@@ -9,4 +9,6 @@ pub struct EntityImplements  {
 	pub is_default: Option<bool>,
 	#[serde(rename = "isFullyMapped")]
 	pub is_fully_mapped: Option<bool>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

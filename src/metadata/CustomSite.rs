@@ -101,4 +101,6 @@ pub struct CustomSite  {
 	pub subdomain: Option<String>,
 	#[serde(rename = "urlPathPrefix")]
 	pub url_path_prefix: Option<String>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

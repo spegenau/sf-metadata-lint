@@ -12,4 +12,6 @@ pub struct IncidentMgmtSettings  {
 	pub enable_site_banner_broadcast_type: Option<bool>,
 	#[serde(rename = "enableSlackBroadcastType")]
 	pub enable_slack_broadcast_type: Option<bool>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

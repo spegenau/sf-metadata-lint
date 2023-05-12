@@ -30,4 +30,6 @@ pub struct SecuritySettings  {
 	pub session_settings: Option<SessionSettings>,
 	#[serde(rename = "singleSignOnSettings")]
 	pub single_sign_on_settings: Option<SingleSignOnSettings>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

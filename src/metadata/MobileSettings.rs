@@ -15,4 +15,6 @@ pub struct MobileSettings  {
 	pub enable_s_1_encrypted_storage_pref_2: Option<bool>,
 	#[serde(rename = "enableS1OfflinePref")]
 	pub enable_s_1_offline_pref: Option<bool>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

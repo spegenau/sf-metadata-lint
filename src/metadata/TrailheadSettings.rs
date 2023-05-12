@@ -8,4 +8,6 @@ pub struct TrailheadSettings  {
 	pub enable_my_trailhead_pref: Option<bool>,
 	#[serde(rename = "enableTrailheadInLexTerms")]
 	pub enable_trailhead_in_lex_terms: Option<bool>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

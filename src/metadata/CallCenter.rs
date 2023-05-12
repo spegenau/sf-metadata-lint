@@ -23,4 +23,6 @@ pub struct CallCenter  {
 	pub vendor_call_center_status_maps: Option<Vec<VendorCallCenterStatusMap>>,
 	#[serde(rename = "version")]
 	pub version: Option<String>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

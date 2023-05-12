@@ -17,4 +17,6 @@ pub struct AIApplicationConfig  {
 	pub rank: Option<i32>,
 	#[serde(rename = "scoringMode")]
 	pub scoring_mode: Option<AIScoringMode>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

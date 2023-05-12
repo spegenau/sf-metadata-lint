@@ -10,4 +10,6 @@ pub struct BlacklistedConsumer  {
 	pub consumer_name: String,
 	#[serde(rename = "masterLabel")]
 	pub master_label: String,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

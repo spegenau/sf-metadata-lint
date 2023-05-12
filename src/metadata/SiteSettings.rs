@@ -10,4 +10,6 @@ pub struct SiteSettings  {
 	pub enable_sites_record_reassign_org_pref: Option<bool>,
 	#[serde(rename = "enableTopicsInSites")]
 	pub enable_topics_in_sites: Option<bool>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

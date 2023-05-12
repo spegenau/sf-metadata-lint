@@ -6,4 +6,6 @@ pub struct DocumentChecklistSettings  {
 	pub dci_custom_sharing: Option<bool>,
 	#[serde(rename = "deleteDCIWithFiles")]
 	pub delete_dci_with_files: Option<bool>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

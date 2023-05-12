@@ -21,4 +21,6 @@ pub struct Audience  {
 	pub is_default_audience: Option<bool>,
 	#[serde(rename = "targets")]
 	pub targets: Option<PersonalizationTargetInfos>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

@@ -10,4 +10,6 @@ pub struct OauthOidcSettings  {
 	pub enable_hdless_fgt_psw_flow: Option<bool>,
 	#[serde(rename = "oAuthCdCrdtFlowEnable")]
 	pub o_auth_cd_crdt_flow_enable: Option<bool>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

@@ -33,4 +33,6 @@ pub struct VirtualVisitConfig  {
 	pub video_control_region: Option<String>,
 	#[serde(rename = "visitRegion")]
 	pub visit_region: Option<VirtualVisitVisitRegion>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

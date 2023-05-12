@@ -26,4 +26,6 @@ pub struct Bot  {
 	pub log_private_conversation_data: Option<bool>,
 	#[serde(rename = "richContentEnabled")]
 	pub rich_content_enabled: Option<bool>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

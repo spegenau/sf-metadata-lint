@@ -107,4 +107,6 @@ pub struct CaseSettings  {
 	pub visible_in_css_checkbox: Option<bool>,
 	#[serde(rename = "webToCase")]
 	pub web_to_case: Option<WebToCaseSettings>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

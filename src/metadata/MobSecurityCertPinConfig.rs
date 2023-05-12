@@ -25,4 +25,6 @@ pub struct MobSecurityCertPinConfig  {
 	pub severity_level: MobileSecurityPolicySeverityLevel,
 	#[serde(rename = "type")]
 	pub _type: MobileSecurityCertPinType,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

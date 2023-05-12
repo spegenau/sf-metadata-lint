@@ -14,4 +14,6 @@ pub struct CanvasMetadata  {
 	pub location_options: Option<String>,
 	#[serde(rename = "samlInitiationMethod")]
 	pub saml_initiation_method: Option<String>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

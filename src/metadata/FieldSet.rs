@@ -11,4 +11,6 @@ pub struct FieldSet  {
 	pub displayed_fields: Option<Vec<FieldSetItem>>,
 	#[serde(rename = "label")]
 	pub label: String,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

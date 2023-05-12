@@ -17,4 +17,6 @@ pub struct LiveChatSensitiveDataRule  {
 	pub priority: i32,
 	#[serde(rename = "replacement")]
 	pub replacement: Option<String>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

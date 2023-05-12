@@ -16,4 +16,6 @@ pub struct WorkforceEngagementSettings  {
 	pub enable_workforce_engagement: Option<bool>,
 	#[serde(rename = "enableWorkforceEngagementConfiguration")]
 	pub enable_workforce_engagement_configuration: Option<bool>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

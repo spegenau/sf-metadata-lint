@@ -14,4 +14,6 @@ pub struct GatewayProviderPaymentMethodType  {
 	pub payment_method_type: Option<String>,
 	#[serde(rename = "recordType")]
 	pub record_type: Option<String>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

@@ -20,4 +20,6 @@ pub struct LeadConfigSettings  {
 	pub should_lead_convert_require_validation: Option<bool>,
 	#[serde(rename = "shouldSendNotificationEmailWhenLeadOwnerUpdatesViaApexInLEX")]
 	pub should_send_notification_email_when_lead_owner_updates_via_apex_in_lex: Option<bool>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

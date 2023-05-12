@@ -14,4 +14,6 @@ pub struct BriefcaseDefinition  {
 	pub master_label: String,
 	#[serde(rename = "type")]
 	pub _type: Option<BriefcaseType>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

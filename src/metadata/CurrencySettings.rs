@@ -12,4 +12,6 @@ pub struct CurrencySettings  {
 	pub is_multi_currency_activation_allowed: Option<bool>,
 	#[serde(rename = "isParenCurrencyConvDisabled")]
 	pub is_paren_currency_conv_disabled: Option<bool>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

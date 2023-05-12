@@ -15,4 +15,6 @@ pub struct UserCriteria  {
 	pub profiles: Option<Vec<String>>,
 	#[serde(rename = "userTypes")]
 	pub user_types: Option<Vec<NetworkUserType>>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

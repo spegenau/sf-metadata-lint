@@ -51,4 +51,6 @@ pub struct SearchSettings  {
 	pub single_search_result_shortcut_enabled: bool,
 	#[serde(rename = "spellCorrectKnowledgeSearchEnabled")]
 	pub spell_correct_knowledge_search_enabled: bool,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

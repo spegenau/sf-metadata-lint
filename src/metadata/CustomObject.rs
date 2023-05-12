@@ -138,4 +138,6 @@ pub struct CustomObject  {
 	pub visibility: Option<SetupObjectVisibility>,
 	#[serde(rename = "webLinks")]
 	pub web_links: Option<Vec<WebLink>>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

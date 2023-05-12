@@ -25,4 +25,6 @@ pub struct Package  {
 	pub uninstall_class: Option<String>,
 	#[serde(rename = "version")]
 	pub version: String,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

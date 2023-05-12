@@ -62,4 +62,6 @@ pub struct NamedCredential  {
 	pub protocol: Option<AuthenticationProtocol>,
 	#[serde(rename = "username")]
 	pub username: Option<String>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

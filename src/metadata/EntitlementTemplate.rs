@@ -14,4 +14,6 @@ pub struct EntitlementTemplate  {
 	pub term: Option<i32>,
 	#[serde(rename = "type")]
 	pub _type: Option<String>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

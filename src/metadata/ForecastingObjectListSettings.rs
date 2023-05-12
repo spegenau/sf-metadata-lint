@@ -5,4 +5,6 @@ use serde::{Deserialize};
 pub struct ForecastingObjectListSettings  {
 	#[serde(rename = "forecastingTypeObjectListSettings")]
 	pub forecasting_type_object_list_settings: Option<Vec<ForecastingTypeObjectListSettings>>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

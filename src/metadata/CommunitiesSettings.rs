@@ -52,4 +52,6 @@ pub struct CommunitiesSettings  {
 	pub enable_unsupported_browser_modal_pref: Option<bool>,
 	#[serde(rename = "enableUsernameUniqForOrgPref")]
 	pub enable_username_uniq_for_org_pref: Option<bool>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

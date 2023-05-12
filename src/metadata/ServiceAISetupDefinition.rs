@@ -12,4 +12,6 @@ pub struct ServiceAISetupDefinition  {
 	pub setup_status: ServiceAISetupDefStatus,
 	#[serde(rename = "supportedLanguages")]
 	pub supported_languages: Option<String>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

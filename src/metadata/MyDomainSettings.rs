@@ -38,4 +38,6 @@ pub struct MyDomainSettings  {
 	pub use_stabilized_my_domain_hostnames: Option<bool>,
 	#[serde(rename = "useStabilizedSandboxMyDomainHostnames")]
 	pub use_stabilized_sandbox_my_domain_hostnames: Option<bool>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

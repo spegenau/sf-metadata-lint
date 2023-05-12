@@ -20,4 +20,6 @@ pub struct IndustriesManufacturingSettings  {
 	pub enable_partner_performance_management: Option<bool>,
 	#[serde(rename = "enablePartnerVisitManagement")]
 	pub enable_partner_visit_management: Option<bool>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

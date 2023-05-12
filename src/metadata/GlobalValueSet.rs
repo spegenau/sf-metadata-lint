@@ -11,4 +11,6 @@ pub struct GlobalValueSet  {
 	pub master_label: String,
 	#[serde(rename = "sorted")]
 	pub sorted: bool,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

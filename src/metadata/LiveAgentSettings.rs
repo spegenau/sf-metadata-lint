@@ -8,4 +8,6 @@ pub struct LiveAgentSettings  {
 	pub enable_live_agent: Option<bool>,
 	#[serde(rename = "enableQuickTextEnabled")]
 	pub enable_quick_text_enabled: Option<bool>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

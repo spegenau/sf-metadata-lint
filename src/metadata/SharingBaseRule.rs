@@ -14,4 +14,6 @@ pub struct SharingBaseRule  {
 	pub label: String,
 	#[serde(rename = "sharedTo")]
 	pub shared_to: SharedTo,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

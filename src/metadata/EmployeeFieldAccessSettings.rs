@@ -6,4 +6,6 @@ pub struct EmployeeFieldAccessSettings  {
 	pub enable_employee_field_mask_defaults: Option<bool>,
 	#[serde(rename = "enableEmployeeFieldMasking")]
 	pub enable_employee_field_masking: Option<bool>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

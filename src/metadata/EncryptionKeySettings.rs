@@ -8,4 +8,6 @@ pub struct EncryptionKeySettings  {
 	pub enable_cache_only_keys: Option<bool>,
 	#[serde(rename = "enableReplayDetection")]
 	pub enable_replay_detection: Option<bool>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

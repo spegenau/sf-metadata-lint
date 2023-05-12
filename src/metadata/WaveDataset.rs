@@ -12,4 +12,6 @@ pub struct WaveDataset  {
 	pub template_asset_source_name: Option<String>,
 	#[serde(rename = "type")]
 	pub _type: Option<String>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

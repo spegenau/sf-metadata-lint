@@ -9,4 +9,6 @@ pub struct Skill  {
 	pub description: Option<String>,
 	#[serde(rename = "label")]
 	pub label: String,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

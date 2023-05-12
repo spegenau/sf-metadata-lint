@@ -12,4 +12,6 @@ pub struct CustomValue  {
 	pub is_active: Option<bool>,
 	#[serde(rename = "label")]
 	pub label: Option<String>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

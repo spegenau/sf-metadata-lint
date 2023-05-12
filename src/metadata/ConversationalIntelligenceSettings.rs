@@ -10,4 +10,6 @@ pub struct ConversationalIntelligenceSettings  {
 	pub enable_oppty_matching: Option<bool>,
 	#[serde(rename = "enableUnifiedActivities")]
 	pub enable_unified_activities: Option<bool>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

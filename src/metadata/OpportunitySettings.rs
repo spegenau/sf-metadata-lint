@@ -49,4 +49,6 @@ pub struct OpportunitySettings  {
 	pub simple_opp_create_from_contact: Option<bool>,
 	#[serde(rename = "simpleOppCreateFromEvent")]
 	pub simple_opp_create_from_event: Option<bool>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

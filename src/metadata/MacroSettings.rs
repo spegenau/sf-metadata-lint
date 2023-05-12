@@ -8,4 +8,6 @@ pub struct MacroSettings  {
 	pub enable_advanced_search: Option<bool>,
 	#[serde(rename = "macrosInFolders")]
 	pub macros_in_folders: Option<bool>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

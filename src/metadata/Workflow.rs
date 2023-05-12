@@ -26,4 +26,6 @@ pub struct Workflow  {
 	pub send: Option<Vec<WorkflowSend>>,
 	#[serde(rename = "tasks")]
 	pub tasks: Option<Vec<WorkflowTask>>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

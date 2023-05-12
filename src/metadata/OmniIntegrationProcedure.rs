@@ -58,4 +58,6 @@ pub struct OmniIntegrationProcedure  {
 	pub version_number: f32,
 	#[serde(rename = "webComponentKey")]
 	pub web_component_key: Option<String>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

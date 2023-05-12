@@ -17,4 +17,6 @@ pub struct AnalyticSnapshot  {
 	pub source_report: String,
 	#[serde(rename = "targetObject")]
 	pub target_object: String,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

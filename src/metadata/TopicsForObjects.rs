@@ -6,4 +6,6 @@ pub struct TopicsForObjects  {
 	pub enable_topics: bool,
 	#[serde(rename = "entityApiName")]
 	pub entity_api_name: String,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

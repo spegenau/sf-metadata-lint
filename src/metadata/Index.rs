@@ -7,4 +7,6 @@ pub struct Index  {
 	pub fields: Option<Vec<IndexField>>,
 	#[serde(rename = "label")]
 	pub label: String,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

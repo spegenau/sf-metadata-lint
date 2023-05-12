@@ -10,4 +10,6 @@ pub struct SubscriptionManagementSettings  {
 	pub enable_refund_automation: Option<bool>,
 	#[serde(rename = "enableSubscriptionManagement")]
 	pub enable_subscription_management: Option<bool>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

@@ -10,4 +10,6 @@ pub struct PersonAccountOwnerPowerUser  {
 	pub portal_type: String,
 	#[serde(rename = "user")]
 	pub user: String,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

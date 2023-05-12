@@ -22,4 +22,6 @@ pub struct MLRecommendationDefinition  {
 	pub positive_expression: Option<MLFilter>,
 	#[serde(rename = "status")]
 	pub status: MLRecommendationDefinitionStatus,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

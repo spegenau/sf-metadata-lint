@@ -8,4 +8,6 @@ pub struct EinsteinAgentSettings  {
 	pub re_run_attribute_based_rules: Option<bool>,
 	#[serde(rename = "runAssignmentRules")]
 	pub run_assignment_rules: Option<bool>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

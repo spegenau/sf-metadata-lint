@@ -20,4 +20,6 @@ pub struct IdeasSettings  {
 	pub half_life: Option<f32>,
 	#[serde(rename = "ideasProfilePage")]
 	pub ideas_profile_page: Option<String>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

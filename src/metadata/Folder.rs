@@ -16,4 +16,6 @@ pub struct Folder  {
 	pub public_folder_access: Option<PublicFolderAccess>,
 	#[serde(rename = "sharedTo")]
 	pub shared_to: Option<SharedTo>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

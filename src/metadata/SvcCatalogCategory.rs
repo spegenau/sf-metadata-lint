@@ -14,4 +14,6 @@ pub struct SvcCatalogCategory  {
 	pub parent_category: Option<String>,
 	#[serde(rename = "sortOrder")]
 	pub sort_order: Option<i32>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

@@ -8,4 +8,6 @@ pub struct ConnectedAppSettings  {
 	pub enable_admin_approved_apps_only_for_external_user: Option<bool>,
 	#[serde(rename = "enableSkipUserProvisioningWizardWelcomePage")]
 	pub enable_skip_user_provisioning_wizard_welcome_page: Option<bool>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

@@ -24,4 +24,6 @@ pub struct ProfilePasswordPolicy  {
 	pub password_question: i32,
 	#[serde(rename = "profile")]
 	pub profile: String,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

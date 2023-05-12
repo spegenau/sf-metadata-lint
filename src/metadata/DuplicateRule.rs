@@ -30,4 +30,6 @@ pub struct DuplicateRule  {
 	pub security_option: DupeSecurityOptionType,
 	#[serde(rename = "sortOrder")]
 	pub sort_order: i32,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

@@ -12,4 +12,6 @@ pub struct WaveTemplateBundle  {
 	pub label: String,
 	#[serde(rename = "templateType")]
 	pub template_type: String,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

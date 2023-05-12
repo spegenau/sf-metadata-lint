@@ -16,4 +16,6 @@ pub struct OrderSettings  {
 	pub enable_reduction_orders: Option<bool>,
 	#[serde(rename = "enableZeroQuantity")]
 	pub enable_zero_quantity: Option<bool>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

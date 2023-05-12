@@ -34,4 +34,6 @@ pub struct HighVelocitySalesSettings  {
 	pub enable_quick_cadence_auto_send_email: Option<bool>,
 	#[serde(rename = "enableTaskLoggingPref")]
 	pub enable_task_logging_pref: Option<bool>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

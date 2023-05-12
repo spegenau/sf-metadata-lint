@@ -18,4 +18,6 @@ pub struct IPAddressRange  {
 	pub master_label: String,
 	#[serde(rename = "startIpAddress")]
 	pub start_ip_address: String,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

@@ -36,4 +36,6 @@ pub struct SharingSettings  {
 	pub enable_standard_report_visibility: Option<bool>,
 	#[serde(rename = "enableTerritoryForecastManager")]
 	pub enable_territory_forecast_manager: Option<bool>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

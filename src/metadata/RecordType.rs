@@ -15,4 +15,6 @@ pub struct RecordType  {
 	pub label: String,
 	#[serde(rename = "picklistValues")]
 	pub picklist_values: Option<Vec<RecordTypePicklistValue>>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

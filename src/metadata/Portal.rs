@@ -54,4 +54,6 @@ pub struct Portal  {
 	pub stylesheet_document: Option<String>,
 	#[serde(rename = "type")]
 	pub _type: PortalType,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

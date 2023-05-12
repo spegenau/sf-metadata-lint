@@ -7,4 +7,6 @@ pub struct PlatformEventChannel  {
 	pub channel_type: PlatformEventChannelType,
 	#[serde(rename = "label")]
 	pub label: String,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

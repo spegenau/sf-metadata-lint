@@ -24,4 +24,6 @@ pub struct CommunityThemeDefinition  {
 	pub theme_route_override: Option<Vec<CommunityThemeRouteOverride>>,
 	#[serde(rename = "themeSetting")]
 	pub theme_setting: Option<Vec<CommunityThemeSetting>>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

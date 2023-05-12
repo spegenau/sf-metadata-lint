@@ -8,4 +8,6 @@ pub struct AccountIntelligenceSettings  {
 	pub enable_automated_account_fields: Option<bool>,
 	#[serde(rename = "enableNewsStories")]
 	pub enable_news_stories: Option<bool>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

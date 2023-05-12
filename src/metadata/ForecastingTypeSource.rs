@@ -16,4 +16,6 @@ pub struct ForecastingTypeSource  {
 	pub relation_field: Option<String>,
 	#[serde(rename = "sourceGroup")]
 	pub source_group: i32,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

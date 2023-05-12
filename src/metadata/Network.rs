@@ -137,4 +137,6 @@ pub struct Network  {
 	pub verification_template: Option<String>,
 	#[serde(rename = "welcomeTemplate")]
 	pub welcome_template: String,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

@@ -20,4 +20,6 @@ pub struct OrderManagementSettings  {
 	pub enable_person_accounts_for_shoppers: Option<bool>,
 	#[serde(rename = "initOMAutomation")]
 	pub init_om_automation: Option<bool>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

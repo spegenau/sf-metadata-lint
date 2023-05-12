@@ -242,4 +242,6 @@ pub struct IndustriesSettings  {
 	pub rla_edit_if_acc_has_edit: Option<bool>,
 	#[serde(rename = "transformRBLtoDPE")]
 	pub transform_rb_lto_dpe: Option<bool>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

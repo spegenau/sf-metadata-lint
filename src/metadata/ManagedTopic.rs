@@ -12,4 +12,6 @@ pub struct ManagedTopic  {
 	pub position: i32,
 	#[serde(rename = "topicDescription")]
 	pub topic_description: String,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

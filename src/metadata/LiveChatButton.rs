@@ -82,4 +82,6 @@ pub struct LiveChatButton  {
 	pub _type: LiveChatButtonType,
 	#[serde(rename = "windowLanguage")]
 	pub window_language: Option<Language>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

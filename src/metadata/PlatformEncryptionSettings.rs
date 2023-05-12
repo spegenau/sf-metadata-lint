@@ -16,4 +16,6 @@ pub struct PlatformEncryptionSettings  {
 	pub is_mek_for_encryption_required: Option<bool>,
 	#[serde(rename = "isUseHighAssuranceKeysRequired")]
 	pub is_use_high_assurance_keys_required: Option<bool>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

@@ -33,4 +33,6 @@ pub struct Community  {
 	pub show_in_portal: Option<bool>,
 	#[serde(rename = "site")]
 	pub site: Option<String>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

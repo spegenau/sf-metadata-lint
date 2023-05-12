@@ -14,4 +14,6 @@ pub struct PermissionSetGroup  {
 	pub permission_sets: Option<Vec<String>>,
 	#[serde(rename = "status")]
 	pub status: Option<String>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

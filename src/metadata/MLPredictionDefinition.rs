@@ -27,4 +27,6 @@ pub struct MLPredictionDefinition  {
 	pub status: MLPredictionDefinitionStatus,
 	#[serde(rename = "type")]
 	pub _type: AIPredictionType,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

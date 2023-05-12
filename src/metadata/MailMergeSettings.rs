@@ -6,4 +6,6 @@ pub struct MailMergeSettings  {
 	pub enable_extended_mail_merge: Option<bool>,
 	#[serde(rename = "saveMailMergeDocsAsSalesforceDocs")]
 	pub save_mail_merge_docs_as_salesforce_docs: Option<bool>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

@@ -28,4 +28,6 @@ pub struct ModerationRule  {
 	pub user_criteria: Option<Vec<String>>,
 	#[serde(rename = "userMessage")]
 	pub user_message: Option<String>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

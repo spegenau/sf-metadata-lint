@@ -22,4 +22,6 @@ pub struct DataDotComSettings  {
 	pub enable_data_dot_com_opt_outs_enabled: Option<bool>,
 	#[serde(rename = "enableDatacloudAPIEnabled")]
 	pub enable_datacloud_api_enabled: Option<bool>,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

@@ -13,4 +13,6 @@ pub struct AppointmentAssignmentPolicy  {
 	pub policy_type: AssignmentPolicyType,
 	#[serde(rename = "utilizationFactor")]
 	pub utilization_factor: UtilizationFactor,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }

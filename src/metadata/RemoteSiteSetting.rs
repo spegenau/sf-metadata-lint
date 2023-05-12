@@ -10,4 +10,6 @@ pub struct RemoteSiteSetting  {
 	pub is_active: bool,
 	#[serde(rename = "url")]
 	pub url: String,
+	#[serde(rename = "fullName")]
+	pub full_name: Option<String>,
 }
