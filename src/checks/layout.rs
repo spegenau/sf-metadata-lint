@@ -10,13 +10,11 @@ use crate::{finding::Finding, sf_xml_file::SFXMLFile};
 
 pub use crate::utilities::*;
 
-use self::util::get_structs;
-
 pub struct CheckLayout {}
 
-impl SFXMLFile for CheckLayout {
-    fn run_checks(&mut self, project_path: &PathBuf) -> Vec<Finding> {
-        let (layouts, mut findings) = get_structs::<Layout>(self, project_path);
+impl SFXMLFile<Layout> for CheckLayout {
+    fn run_checks(&mut self, project_path: &PathBuf, _fix_it: bool) -> Vec<Finding> {
+        let (layouts, mut findings) = self.get_structs(project_path);
 
         if layouts.len() > 0 {
             findings.append(&mut self.validate_layout_sections(&layouts, project_path));

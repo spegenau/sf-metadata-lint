@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>A_Non_Existing_Global_Picklist__c</fullName>
+    <description>A non existing global picklist</description>
+    <externalId>false</externalId>
+    <label>Does not exist</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetName>Picklist_that_does_not_exist__c</valueSetName>
+    </valueSet>
+</CustomField>

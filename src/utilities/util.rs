@@ -1,12 +1,10 @@
 use glob::glob;
 use quick_xml::DeError;
 use serde::Deserialize;
-use std::{fs, path::PathBuf, collections::HashMap};
+use std::{fs, path::PathBuf};
 
 use quick_xml::events::Event;
 use quick_xml::reader::Reader;
-
-use crate::{finding::{Finding, FindingType}, sf_xml_file::SFXMLFile};
 
 pub const MANAGED_PACKAGE_PATTERN: &str = "[a-zA-Z0-9_]+[_]{2}[a-zA-Z0-9_]+[__]{2}c";
 
@@ -52,27 +50,6 @@ pub fn parse_file_as_struct<T: for<'a> Deserialize<'a>>(path: PathBuf) -> Result
         },
     }
 }
-
-pub fn get_structs<T: for<'a> Deserialize<'a>>(the_checker_struct: &impl SFXMLFile, project_path: &PathBuf) -> (HashMap<String, T>, Vec<Finding>) {
-    let files = the_checker_struct.get_file_list(project_path);
-
-    let mut structs: HashMap<String, T> = HashMap::new();
-    let mut findings: Vec<Finding> = Vec::new();
-
-    for path in files {
-        let file_path = String::from(path.to_str().unwrap());
-        let the_struct: Result<T, String> = parse_file_as_struct::<T>(path);
-        match the_struct {
-            Err(msg) => findings.push(Finding { file: file_path, line: None, position: None, message: msg, r#type: FindingType::ERROR, solution: None }),
-            Ok(the_struct) => {
-                structs.insert(file_path, the_struct);
-            },
-        }
-    }
-
-    return (structs, findings);
-}
-
 
 pub fn debug_file(xml: &String) {
 

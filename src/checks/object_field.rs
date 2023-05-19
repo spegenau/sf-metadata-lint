@@ -1,16 +1,17 @@
 use std::collections::HashMap;
 use std::path::PathBuf;
 
+use regex::Regex;
+
 use crate::CustomField::CustomField;
 pub use crate::utilities::*;
 
 use self::finding::Finding;
 use self::sf_xml_file::SFXMLFile;
-use self::util::get_structs;
 pub struct CheckObjectField {}
 
-impl SFXMLFile for CheckObjectField {
-    fn run_checks(&mut self, _project_path: &PathBuf) -> Vec<Finding> {
+impl SFXMLFile<CustomField> for CheckObjectField {
+    fn run_checks(&mut self, _project_path: &PathBuf, _fix_it: bool) -> Vec<Finding> {
         
         let findings: Vec<Finding> = Vec::new();
                 
@@ -26,10 +27,14 @@ impl CheckObjectField {
     pub fn get_all_fields(&self, project_path: &PathBuf) -> (HashMap<String, HashMap<String, CustomField>>, Vec<Finding>) {
         let mut map: HashMap<String, HashMap<String, CustomField>> = HashMap::new();
 
-        let (mut structs, findings) = get_structs::<CustomField>(self, project_path);
+        let (mut structs, findings) = self.get_structs(project_path);
+
+        let fieldmatcher =
+        Regex::new(r"[a-zA-Z-\\]+objects[\\/]([0-9a-zA-Z_-]+)[\\/]fields[\\/]([a-zA-Z0-9_\-\\\.]+)\.field\-meta\.xml")
+            .unwrap();
 
         for (path, the_field) in structs.drain() {
-            let (object_name, field_name) = CheckObjectField::path_to_object_and_field(&path);
+            let (object_name, field_name) = CheckObjectField::path_to_object_and_field(&path, &fieldmatcher);
 
             if !map.contains_key(&object_name) {
                 let key = String::from(object_name.as_str());
@@ -64,16 +69,12 @@ impl CheckObjectField {
         occurences == 2 || occurences == 0
     }
 
-    fn path_to_object_and_field(file_path: &String) -> (String, String) {
-        let buf = PathBuf::from(file_path);
-        let mut components = buf.components().collect::<Vec<_>>();
-
-        let field = components.pop().unwrap().as_os_str().to_str().unwrap().replace(".field-meta.xml", "");
-        let _fields_folder = components.pop();
-        let object = components.pop().unwrap().as_os_str().to_str().unwrap();
+    fn path_to_object_and_field(file_path: &String, matcher: &Regex) -> (String, String) {
+        let captures = matcher.captures(file_path).unwrap();
+        
+        let object = captures.get(1).unwrap().as_str();
+        let field = captures.get(2).unwrap().as_str();
 
         return (String::from(object), String::from(field));
     }
-
-
 }

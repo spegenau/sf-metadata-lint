@@ -10,13 +10,13 @@ use crate::PermissionSet::PermissionSet;
 
 use self::finding::Finding;
 use self::sf_xml_file::SFXMLFile;
-use self::util::{get_structs, MANAGED_PACKAGE_PATTERN};
+use self::util::{MANAGED_PACKAGE_PATTERN};
 
 pub struct CheckPermissionSet {}
 
-impl SFXMLFile for CheckPermissionSet {
-    fn run_checks(&mut self, project_path: &PathBuf) -> Vec<Finding> {
-        let (structs, mut findings) = get_structs::<PermissionSet>(self, project_path);
+impl SFXMLFile<PermissionSet> for CheckPermissionSet {
+    fn run_checks(&mut self, project_path: &PathBuf, _fix_it: bool) -> Vec<Finding> {
+        let (structs, mut findings) = self.get_structs(project_path);
         
         if structs.len() > 0 {
             let field_checker = CheckObjectField {};

@@ -24,3 +24,4 @@ regex = "1.7.3"
 serde = { version = "1.0.160", features = ["derive"] }
 serde-enum-str = "0.3.2"
 serde-xml-rs = "0.6.0"
+urlencoding = "2.1.2"

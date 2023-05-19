@@ -8,13 +8,11 @@ use crate::{finding::Finding, sf_xml_file::SFXMLFile};
 
 pub use crate::utilities::*;
 
-use self::util::get_structs;
-
 pub struct CheckTranslations {}
 
-impl SFXMLFile for CheckTranslations {
-    fn run_checks(&mut self, project_path: &PathBuf) -> Vec<Finding> {
-        let (translations, mut findings) = get_structs::<Translations>(self, project_path);
+impl SFXMLFile<Translations> for CheckTranslations {
+    fn run_checks(&mut self, project_path: &PathBuf, _fix_it: bool) -> Vec<Finding> {
+        let (translations, mut findings) = self.get_structs(project_path);
 
         if translations.len() > 0 {
             findings.append(&mut self.check_for_empty_translations(&translations));

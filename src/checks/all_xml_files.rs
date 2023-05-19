@@ -1,15 +1,17 @@
 use std::{path::PathBuf, fs};
 
 use quick_xml::{Reader, events::Event};
+use serde::Deserialize;
 
 use crate::{sf_xml_file::SFXMLFile, util::{get_files_by_pattern}, finding::{Finding, FindingType}};
 
+#[derive(Debug, Deserialize)]
 pub struct CheckAllXmlFiles {
 
 }
 
-impl SFXMLFile for CheckAllXmlFiles {
-    fn run_checks(&mut self, project_path: &PathBuf) -> Vec<Finding> {
+impl SFXMLFile<CheckAllXmlFiles> for CheckAllXmlFiles {
+    fn run_checks(&mut self, project_path: &PathBuf, _fix_it: bool) -> Vec<Finding> {
         
         let mut findings: Vec<Finding> = Vec::new();
         

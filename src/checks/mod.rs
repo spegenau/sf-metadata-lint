@@ -4,3 +4,5 @@ pub mod permission_set;
 pub mod profile;
 pub mod translation;
 pub mod layout;
+pub mod recordtype;
+pub mod global_value_set;

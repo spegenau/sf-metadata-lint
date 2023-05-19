@@ -6,17 +6,17 @@ use crate::Profile::Profile;
 
 pub use crate::utilities::*;
 
-use self::util::{get_structs, does_file_exist_in_project};
+use self::util::{does_file_exist_in_project};
 
 pub struct CheckProfiles {
 
 }
 
-impl SFXMLFile for CheckProfiles {
-    fn run_checks(&mut self, project_path: &PathBuf) -> Vec<Finding> {
+impl SFXMLFile<Profile> for CheckProfiles {
+    fn run_checks(&mut self, project_path: &PathBuf, _fix_it: bool) -> Vec<Finding> {
         
         
-        let (profiles, mut findings) = get_structs::<Profile>(self, project_path);
+        let (profiles, mut findings) = self.get_structs(project_path);
         
         if profiles.len() > 0 {
             findings.append(&mut self.validate_page_layout_availability(&profiles, project_path));
