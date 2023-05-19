@@ -49,3 +49,4 @@ _your need to figure that yourself...Sorry..._
 |                 | - Empty quick action translations                                                                                                          |
 |                 | - Empty flow translations                                                                                                                  |
 | Layouts         | - Missing fields                                                                                                                           |
+| Layouts         | - Picklistvalue availability                                                                                                               |
