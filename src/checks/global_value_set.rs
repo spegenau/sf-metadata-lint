@@ -31,7 +31,7 @@ impl CheckGlobalValueSet {
         let (global_value_sets, mut findings) = self.get_structs(project_path);
 
         let picklist_name_matcher =
-            Regex::new(r"[a-zA-Z-\\]+globalValueSets[\\/]([a-zA-Z_-]+)[a-zA-Z0-9_\-\\\.]+")
+            Regex::new(r"[a-zA-Z-\\/]+globalValueSets[\\/]([a-zA-Z_-]+)[a-zA-Z0-9_\-\\\.]+")
                 .unwrap();
 
         for (filename, global_value_set) in global_value_sets {
@@ -68,6 +68,10 @@ impl CheckGlobalValueSet {
     }
 
     fn get_global_picklist_name(&self, filename: &String, matcher: &Regex) -> String {
-        return String::from(matcher.captures(filename).unwrap().get(1).unwrap().as_str());
+        return String::from(matcher.captures(filename)
+            .expect(format!("Did not match {filename} (Regex: {})", matcher.as_str()).as_str())
+            .get(1)
+            .unwrap()
+            .as_str());
     }
 }

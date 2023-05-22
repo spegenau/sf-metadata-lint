@@ -34,7 +34,7 @@ impl CheckRecordTypes {
     pub fn validate_picklist_values(&mut self, recordtypes: &HashMap<String, RecordType>, project_path: &PathBuf) -> Vec<Finding> {
         let (all_fields, mut findings) = (CheckObjectField {}).get_all_fields(project_path);
 
-        let object_matcher = Regex::new(r"[a-zA-Z-\\]+objects[\\/]([0-9a-zA-Z_-]+)[a-zA-Z0-9_\-\\\.]+").unwrap();
+        let object_matcher = Regex::new(r"[a-zA-Z-\\/]+objects[\\/]([0-9a-zA-Z_-]+)[a-zA-Z0-9_\-\\\./]+").unwrap();
 
         let (global_pickist_values, picklistvalue_findings) = (CheckGlobalValueSet {}).get_global_picklists(project_path);
         findings.extend(picklistvalue_findings);
@@ -99,7 +99,11 @@ impl CheckRecordTypes {
     }
 
     fn get_object_name(filename: &String, matcher: &Regex) -> String {
-        return String::from(matcher.captures(filename).unwrap().get(1).unwrap().as_str());
+        return String::from(matcher.captures(filename)
+            .expect(format!("Did not match {filename} (Regex: {})", matcher.as_str()).as_str())
+            .get(1)
+            .unwrap()
+            .as_str());
     }
 
     fn get_picklist_values(&self, global_pickist_values: &HashMap<String, HashSet<String>>, filename: &String, object: &String, field: &CustomField) -> (HashSet<String>, Vec<Finding>) {

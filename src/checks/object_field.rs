@@ -30,7 +30,7 @@ impl CheckObjectField {
         let (mut structs, findings) = self.get_structs(project_path);
 
         let fieldmatcher =
-        Regex::new(r"[a-zA-Z-\\]+objects[\\/]([0-9a-zA-Z_-]+)[\\/]fields[\\/]([a-zA-Z0-9_\-\\\.]+)\.field\-meta\.xml")
+        Regex::new(r"[a-zA-Z-\\/\.]+objects[\\/]([0-9a-zA-Z_-]+)[\\/]fields[\\/]([a-zA-Z0-9_\-\\\.]+)\.field\-meta\.xml")
             .unwrap();
 
         for (path, the_field) in structs.drain() {
@@ -70,7 +70,7 @@ impl CheckObjectField {
     }
 
     fn path_to_object_and_field(file_path: &String, matcher: &Regex) -> (String, String) {
-        let captures = matcher.captures(file_path).unwrap();
+        let captures = matcher.captures(file_path).expect(format!("Did not match {file_path} (Regex: {})", matcher.as_str()).as_str());
         
         let object = captures.get(1).unwrap().as_str();
         let field = captures.get(2).unwrap().as_str();
