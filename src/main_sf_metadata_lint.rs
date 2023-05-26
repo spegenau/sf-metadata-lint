@@ -51,6 +51,8 @@ fn main() {
     findings.extend((translation::CheckTranslations {}).run_checks(&project_path, fix_it));
     findings.extend((layout::CheckLayout {}).run_checks(&project_path, fix_it));
     findings.extend((recordtype::CheckRecordTypes {}).run_checks(&project_path, fix_it));
+    findings.extend((flow::CheckFlow {}).run_checks(&project_path, fix_it));
+    findings.extend((application::CheckApplication {}).run_checks(&project_path, fix_it));
 
     let exit_code = process_findings(&findings, &cli.ignore_warnings);
 
