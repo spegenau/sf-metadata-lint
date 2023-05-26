@@ -17,6 +17,7 @@ use std::time::Instant;
 use clap::Parser;
 
 use crate::sf_xml_file::SFXMLFile;
+use cli_table::{Cell, Style, Table};
 
 /// Simple program to greet a person
 #[derive(Parser)]
@@ -65,36 +66,45 @@ fn main() {
 fn process_findings(findings: &Vec<Finding>, ignore_warnings: &bool) -> i32 {
     let mut return_code = exitcode::OK;
 
-    let errors = Finding::filter_by_type(findings, FindingType::ERROR);
-    let warnings = Finding::filter_by_type(findings, FindingType::WARNING);
+    let mut errors = Finding::filter_by_type(findings, FindingType::ERROR);
+    let mut warnings = Finding::filter_by_type(findings, FindingType::WARNING);
 
     if warnings.len() > 0 {
         println!("\nWARNINGS:");
-        print_messages(&warnings);
+        print_messages(&mut warnings);
         if !ignore_warnings {
             return_code = exitcode::DATAERR;
         }
+        println!("\n");
     }
 
     if errors.len() > 0 {
-        println!("\nERRORS:");
-        print_messages(&errors);
+        println!("ERRORS:");
+        print_messages(&mut errors);
         return_code = exitcode::DATAERR;
+        println!("\n");
     }
 
     println!(
-        "\n\nFound:\t{} errors,\t{} warnings",
+        "Found:\t{} warnings,\t{} errors",
+        warnings.len(),
         errors.len(),
-        warnings.len()
     );
 
     return return_code;
 }
 
-fn print_messages(findings: &Vec<Finding>) {
-    let mut messages: Vec<String> = findings.iter().map(|f| f.get_message()).collect();
+fn print_messages(findings: &mut Vec<Finding>) {
+    findings.sort_by_key(|f| String::from(f.file.as_str()));
 
-    messages.sort();
+    let table = findings
+        .iter()
+        .map(|f| vec![f.file.as_str().cell(), f.message.as_str().cell()])
+        .table()
+        .title(vec!["File".cell().bold(true), "Message".cell().bold(true)])
+        .bold(true);
 
-    print!("{}", messages.join("\n"));
+    let table_display = table.display().unwrap();
+
+    println!("{}", table_display);
 }
