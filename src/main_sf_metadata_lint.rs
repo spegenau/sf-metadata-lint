@@ -17,7 +17,6 @@ use std::time::Instant;
 use clap::Parser;
 
 use crate::sf_xml_file::SFXMLFile;
-use cli_table::{Cell, Style, Table};
 
 /// Simple program to greet a person
 #[derive(Parser)]
@@ -97,14 +96,20 @@ fn process_findings(findings: &Vec<Finding>, ignore_warnings: &bool) -> i32 {
 fn print_messages(findings: &mut Vec<Finding>) {
     findings.sort_by_key(|f| String::from(f.file.as_str()));
 
-    let table = findings
-        .iter()
-        .map(|f| vec![f.file.as_str().cell(), f.message.as_str().cell()])
-        .table()
-        .title(vec!["File".cell().bold(true), "Message".cell().bold(true)])
-        .bold(true);
+    let mut max_len_filename = 0;
+    for finding in &mut *findings {
+        let file_len = finding.file.len();
+        if file_len > max_len_filename {
+            max_len_filename = file_len;
+        }
+    }
 
-    let table_display = table.display().unwrap();
+    let mut lines: String = String::from("");
+    
+    for finding in &mut *findings {
+        let padded_filename = format!("{: <width$}", finding.file, width = max_len_filename);
+        lines += format!("{padded_filename} {}\n", finding.message).as_str();
+    }
 
-    println!("{}", table_display);
+    println!("{lines}");
 }
