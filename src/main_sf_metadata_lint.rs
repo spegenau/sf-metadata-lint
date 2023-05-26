@@ -10,12 +10,14 @@ pub mod checks;
 pub use checks::*;
 use utilities::finding::Finding;
 
+use std::collections::HashMap;
 use std::path::PathBuf;
 use std::str::FromStr;
 use std::time::Instant;
 
 use clap::Parser;
 
+use crate::config::Config;
 use crate::sf_xml_file::SFXMLFile;
 
 /// Simple program to greet a person
@@ -26,9 +28,13 @@ struct Cli {
     #[arg(short, long, default_value_t = false)]
     ignore_warnings: bool,
 
-    /// Try to fix findings
+    /// Try to fix findings (currently not working)
     #[arg(short, long, default_value_t = false)]
     fix_it: bool,
+
+    /// Generate config file
+    #[arg(short, long, default_value_t = false)]
+    generate_config: bool,
 
     #[arg(short, long, value_name = "SFDX PROJECT FOLDER")]
     project_path: Option<PathBuf>,
@@ -43,22 +49,29 @@ fn main() {
 
     println!("Project Path: {}", project_path.to_str().unwrap());
 
+    if cli.generate_config {
+        Config::write_default(&project_path);
+        std::process::exit(exitcode::OK);
+    }
+
+    let config = Config::load(HashMap::new(), project_path.to_str().unwrap());
+    
     let mut findings: Vec<Finding> = Vec::new();
-    findings.extend((all_xml_files::CheckAllXmlFiles {}).run_checks(&project_path, fix_it));
-    findings.extend((permission_set::CheckPermissionSet {}).run_checks(&project_path, fix_it));
-    findings.extend((object_field::CheckObjectField {}).run_checks(&project_path, fix_it));
-    findings.extend((profile::CheckProfiles {}).run_checks(&project_path, fix_it));
-    findings.extend((translation::CheckTranslations {}).run_checks(&project_path, fix_it));
-    findings.extend((layout::CheckLayout {}).run_checks(&project_path, fix_it));
-    findings.extend((recordtype::CheckRecordTypes {}).run_checks(&project_path, fix_it));
-    findings.extend((flow::CheckFlow {}).run_checks(&project_path, fix_it));
-    findings.extend((application::CheckApplication {}).run_checks(&project_path, fix_it));
+    findings.extend((all_xml_files::CheckAllXmlFiles {}).run_checks(&project_path, &config, fix_it));
+    findings.extend((permission_set::CheckPermissionSet {}).run_checks(&project_path, &config, fix_it));
+    findings.extend((object_field::CheckObjectField {}).run_checks(&project_path, &config, fix_it));
+    findings.extend((profile::CheckProfiles {}).run_checks(&project_path, &config, fix_it));
+    findings.extend((translation::CheckTranslations {}).run_checks(&project_path, &config, fix_it));
+    findings.extend((layout::CheckLayout {}).run_checks(&project_path, &config, fix_it));
+    findings.extend((recordtype::CheckRecordTypes {}).run_checks(&project_path, &config, fix_it));
+    findings.extend((flow::CheckFlow {}).run_checks(&project_path, &config, fix_it));
+    findings.extend((application::CheckApplication {}).run_checks(&project_path, &config, fix_it));
 
     let exit_code = process_findings(&findings, &cli.ignore_warnings);
-
+    
     let end_time = Instant::now();
     println!("\nlinting took {:?}", end_time.duration_since(start_time));
-
+    
     std::process::exit(exit_code);
 }
 
@@ -66,26 +79,31 @@ fn process_findings(findings: &Vec<Finding>, ignore_warnings: &bool) -> i32 {
     let mut return_code = exitcode::OK;
 
     let mut errors = Finding::filter_by_type(findings, FindingType::ERROR);
+    let mut infos = Finding::filter_by_type(findings, FindingType::INFO);
     let mut warnings = Finding::filter_by_type(findings, FindingType::WARNING);
 
+    if infos.len() > 0 {
+        println!("INFOS:");
+        print_messages(&mut infos);
+    }
+
     if warnings.len() > 0 {
-        println!("\nWARNINGS:");
+        println!("WARNINGS:");
         print_messages(&mut warnings);
         if !ignore_warnings {
             return_code = exitcode::DATAERR;
         }
-        println!("\n");
     }
 
     if errors.len() > 0 {
         println!("ERRORS:");
         print_messages(&mut errors);
         return_code = exitcode::DATAERR;
-        println!("\n");
     }
 
     println!(
-        "Found:\t{} warnings,\t{} errors",
+        "Found:\t{} infos, \t{} warnings,\t{} errors",
+        infos.len(),
         warnings.len(),
         errors.len(),
     );
@@ -108,7 +126,7 @@ fn print_messages(findings: &mut Vec<Finding>) {
     
     for finding in &mut *findings {
         let padded_filename = format!("{: <width$}", finding.file, width = max_len_filename);
-        lines += format!("{padded_filename} {}\n", finding.message).as_str();
+        lines += format!("{padded_filename}   {} (Rule: {:?})\n", finding.message, finding.rule).as_str();
     }
 
     println!("{lines}");

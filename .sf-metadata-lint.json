@@ -1,0 +1,23 @@
+{
+  "rules": {
+    "XmlFiles_no_invalid_files": "ERROR",
+    "Flow_no_missing_description": "WARNING",
+    "Picklist_no_missing_full_names": "ERROR",
+    "CustomField_no_missing_descriptions": "WARNING",
+    "Profile_no_unwanted_parts": "WARNING",
+    "RecordType_no_missing_objects": "ERROR",
+    "Picklist_no_empty_values": "ERROR",
+    "PermissionSet_no_missing_objects": "ERROR",
+    "RecordType_no_missing_fields": "ERROR",
+    "PermissionSet_no_permission_on_required_field": "ERROR",
+    "RecordType_no_missing_picklist_values": "ERROR",
+    "Picklist_no_missing_global_value_set": "ERROR",
+    "Layout_no_missing_fields": "ERROR",
+    "Profile_no_missing_page_layouts": "ERROR",
+    "XmlFiles_no_invalid_structs": "ERROR",
+    "PermissionSet_no_missing_fields": "ERROR",
+    "Translations_no_empty_translations": "WARNING",
+    "CustomApplication_no_missing_description": "WARNING",
+    "PermissionSet_no_invalid_field_names": "ERROR"
+  }
+}

@@ -8,22 +8,29 @@ use crate::object_field::CheckObjectField;
 pub use crate::utilities::*;
 use crate::PermissionSet::PermissionSet;
 
-use self::finding::Finding;
+use self::config::{Config, Rule};
+use self::finding::{Finding};
 use self::sf_xml_file::SFXMLFile;
 use self::util::{MANAGED_PACKAGE_PATTERN};
 
 pub struct CheckPermissionSet {}
 
 impl SFXMLFile<PermissionSet> for CheckPermissionSet {
-    fn run_checks(&mut self, project_path: &PathBuf, _fix_it: bool) -> Vec<Finding> {
-        let (structs, mut findings) = self.get_structs(project_path);
+    fn run_checks(&mut self, project_path: &PathBuf, config: &Config,  _fix_it: bool) -> Vec<Finding> {
+        let (structs, mut findings) = self.get_structs(project_path, config);
         
         if structs.len() > 0 {
             let field_checker = CheckObjectField {};
-            let (fields, get_fields_findings) = field_checker.get_all_fields(project_path);
+            let (fields, get_fields_findings) = field_checker.get_all_fields(project_path, config);
             findings.extend(get_fields_findings);
-            findings.append(&mut self.check_field_availability(&structs, &fields));
-            findings.append(&mut self.no_required_field_permissions(&structs, &fields));
+            
+            if config.should_execute(Rule::PermissionSet_no_missing_fields) {
+                findings.append(&mut self.check_field_availability(&structs, &fields, config));
+            }
+
+            if config.should_execute(Rule::PermissionSet_no_permission_on_required_field) {
+                findings.append(&mut self.no_required_field_permissions(&structs, &fields, config));
+            }
         }
 
         findings
@@ -39,6 +46,7 @@ impl CheckPermissionSet {
         &mut self,
         structs: &HashMap<String, PermissionSet>,
         fields: &HashMap<String, HashMap<String, CustomField>>,
+        config: &Config,
     ) -> Vec<Finding> {
         let mut findings: Vec<Finding> = Vec::new();
 
@@ -69,19 +77,19 @@ impl CheckPermissionSet {
                                         } else if !FIELD_AVAILABLE && IS_STANDARD_FIELD {
 
                                         } else if !FIELD_AVAILABLE {
-                                            let mut finding = Finding::new_error(&filename, format!("Custom Field '{}' on Object '{}' not found.", field, object));
+                                            let mut finding = Finding::new(&filename, format!("Custom Field '{}' on Object '{}' not found.", field, object), config, Rule::PermissionSet_no_missing_fields);
                                             finding.solution = Some(format!("Add the field {} to the project.", field));
                                             findings.push(finding);
                                         }
 
                                     } else if !IS_STANDARD_FIELD && !IS_MANAGED_OBJECT {
-                                            let mut finding = Finding::new_error(&filename, format!("Standard Object '{}' for Custom Field '{}' not found.", object, field));
+                                            let mut finding = Finding::new(&filename, format!("Standard Object '{}' for Custom Field '{}' not found.", object, field), config, Rule::PermissionSet_no_missing_objects);
                                             finding.solution = Some(format!("Add Object '{}' to the project.", object));
                                             findings.push(finding);
                                     }
 
                                 } else {
-                                    findings.push(Finding::new_error(&filename, format!("Invalid field format. Expecting Object.Field. Found '{}'", perm.field)));
+                                    findings.push(Finding::new(&filename, format!("Invalid field format. Expecting Object.Field. Found '{}'", perm.field), config, Rule::PermissionSet_no_invalid_field_names));
                                 }
                             });
                 }
@@ -96,6 +104,7 @@ impl CheckPermissionSet {
         &mut self,
         structs: &HashMap<String, PermissionSet>,
         fields: &HashMap<String, HashMap<String, CustomField>>,
+        config: &Config,
     ) -> Vec<Finding> {
         let mut findings: Vec<Finding> = Vec::new();
 
@@ -123,7 +132,7 @@ impl CheckPermissionSet {
                                             let the_field = fields.get(object).unwrap().get(field).unwrap();
                                             
                                             if the_field.required.is_some() && the_field.required.unwrap() {
-                                                let mut finding = Finding::new_error(&filename, format!("Custom Field '{field}' on Object '{object}' is required. You must not give permissions for it."));
+                                                let mut finding = Finding::new(&filename, format!("Custom Field '{field}' on Object '{object}' is required. You must not give permissions for it."), config, Rule::PermissionSet_no_permission_on_required_field);
                                                 finding.solution = Some(format!("Remove field permission '{object}.{field}' from permission set."));
                                                 findings.push(finding);
                                             }

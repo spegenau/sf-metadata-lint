@@ -6,14 +6,18 @@ use regex::Regex;
 pub use crate::utilities::*;
 use crate::CustomField::CustomField;
 
-use self::finding::Finding;
+use self::config::{Config, Rule};
+use self::finding::{Finding};
 use self::sf_xml_file::SFXMLFile;
 pub struct CheckObjectField {}
 
 impl SFXMLFile<CustomField> for CheckObjectField {
-    fn run_checks(&mut self, project_path: &PathBuf, _fix_it: bool) -> Vec<Finding> {
-        let (fields, mut findings) = self.get_structs(project_path);
-        findings.extend(self.check_for_descriptions(fields));
+    fn run_checks(&mut self, project_path: &PathBuf, config: &Config,  _fix_it: bool) -> Vec<Finding> {
+        let (fields, mut findings) = self.get_structs(project_path, config);
+
+        if config.should_execute(Rule::CustomField_no_missing_descriptions) {
+            findings.extend(self.check_for_descriptions(fields, config));
+        }
 
         findings
     }
@@ -27,10 +31,11 @@ impl CheckObjectField {
     pub fn get_all_fields(
         &self,
         project_path: &PathBuf,
+        config: &Config
     ) -> (HashMap<String, HashMap<String, CustomField>>, Vec<Finding>) {
         let mut map: HashMap<String, HashMap<String, CustomField>> = HashMap::new();
 
-        let (mut structs, findings) = self.get_structs(project_path);
+        let (mut structs, findings) = self.get_structs(project_path, config);
 
         let fieldmatcher = CheckObjectField::get_object_field_matcher();
         for (path, the_field) in structs.drain() {
@@ -63,7 +68,7 @@ impl CheckObjectField {
         return field_definition_path.exists();
     }
 
-    pub fn check_for_descriptions(&self, fields: HashMap<String, CustomField>) -> Vec<Finding> {
+    pub fn check_for_descriptions(&self, fields: HashMap<String, CustomField>, config: &Config) -> Vec<Finding> {
         let mut findings: Vec<Finding> = Vec::new();
 
         let fieldmatcher = CheckObjectField::get_object_field_matcher();
@@ -71,7 +76,7 @@ impl CheckObjectField {
             let (_object_name, field_name) =
                 CheckObjectField::path_to_object_and_field(&filename, &fieldmatcher);
                 if !CheckObjectField::is_standard_or_managed(field_name.as_str()) && field.description.is_none() {
-                    findings.push(Finding::new_warning(&filename, format!("Best practice: Add a description for this custom field")));
+                    findings.push(Finding::new(&filename, format!("Best practice: Add a description for this custom field"), config, Rule::CustomField_no_missing_descriptions));
                 }
         }
 

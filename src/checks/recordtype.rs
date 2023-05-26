@@ -10,16 +10,17 @@ use crate::object_field::CheckObjectField;
 use crate::{sf_xml_file::SFXMLFile, finding::Finding};
 use urlencoding::decode;
 
+use self::config::{Config, Rule};
 pub use crate::utilities::*;
 
 pub struct CheckRecordTypes {}
 
 impl SFXMLFile<RecordType> for CheckRecordTypes {
-    fn run_checks(&mut self, project_path: &PathBuf, _fix_it: bool) -> Vec<Finding> {        
-        let (recordtypes, mut findings) = self.get_structs(project_path);
+    fn run_checks(&mut self, project_path: &PathBuf, config: &Config,  _fix_it: bool) -> Vec<Finding> {        
+        let (recordtypes, mut findings) = self.get_structs(project_path, config);
         
-        if recordtypes.len() > 0 {
-            findings.append(&mut self.validate_picklist_values(&recordtypes, project_path));
+        if recordtypes.len() > 0 && config.should_execute(Rule::RecordType_no_missing_picklist_values) {
+            findings.append(&mut self.validate_picklist_values(&recordtypes, project_path, config));
         }
             
         findings
@@ -31,12 +32,12 @@ impl SFXMLFile<RecordType> for CheckRecordTypes {
 }
 
 impl CheckRecordTypes {
-    pub fn validate_picklist_values(&mut self, recordtypes: &HashMap<String, RecordType>, project_path: &PathBuf) -> Vec<Finding> {
-        let (all_fields, mut findings) = (CheckObjectField {}).get_all_fields(project_path);
+    pub fn validate_picklist_values(&mut self, recordtypes: &HashMap<String, RecordType>, project_path: &PathBuf, config: &Config) -> Vec<Finding> {
+        let (all_fields, mut findings) = (CheckObjectField {}).get_all_fields(project_path, config);
 
         let object_matcher = Regex::new(r"[a-zA-Z-\\/]+objects[\\/]([0-9a-zA-Z_-]+)[a-zA-Z0-9_\-\\\./]+").unwrap();
 
-        let (global_pickist_values, picklistvalue_findings) = (CheckGlobalValueSet {}).get_global_picklists(project_path);
+        let (global_pickist_values, picklistvalue_findings) = (CheckGlobalValueSet {}).get_global_picklists(project_path, config);
         findings.extend(picklistvalue_findings);
 
 
@@ -49,9 +50,9 @@ impl CheckRecordTypes {
                         let field_name = &picklistvalue.picklist;
 
                         if !CheckObjectField::is_standard_or_managed(&object) && !all_fields.contains_key(&object) {
-                            findings.push(Finding::new_error(&filename, format!("Cannot find custom object '{object}'")));
+                            findings.push(Finding::new(&filename, format!("Cannot find custom object '{object}'"), config, Rule::RecordType_no_missing_objects));
                         } else if !CheckObjectField::is_standard_or_managed(&object) && !all_fields.get(&object).unwrap().contains_key(field_name) {
-                            findings.push(Finding::new_error(&filename, format!("Cannot find custom field '{object}.{filename}'")));
+                            findings.push(Finding::new(&filename, format!("Cannot find custom field '{object}.{filename}'"), config, Rule::RecordType_no_missing_fields));
                         } else if !CheckObjectField::is_standard_or_managed(field_name) {
 
                             match &picklistvalue.values {
@@ -64,7 +65,7 @@ impl CheckRecordTypes {
 
                                             match field {
                                                 Some(field) => {
-                                                    let (available_picklist_values, get_values_findings) = self.get_picklist_values(&global_pickist_values, filename, &object, field);
+                                                    let (available_picklist_values, get_values_findings) = self.get_picklist_values(&global_pickist_values, filename, &object, field, config);
                                                     findings.extend(get_values_findings);
                 
                                                     for value in values {
@@ -72,17 +73,17 @@ impl CheckRecordTypes {
                                                         let full_name: String = decode(full_name).expect("UTF-8").to_string();
                 
                                                         if !available_picklist_values.contains(&full_name) {
-                                                            findings.push(Finding::new_error(&filename, format!("Cannot find picklist value '{full_name}' on picklist '{object}.{field_name}'")));
+                                                            findings.push(Finding::new(&filename, format!("Cannot find picklist value '{full_name}' on picklist '{object}.{field_name}'"), config, Rule::RecordType_no_missing_picklist_values));
                                                         }
                                                     }
                                                 },
                                                 None => {
-                                                    findings.push(Finding::new_error(&filename, format!("Cannot find field '{object}.{field_name}'")));
+                                                    findings.push(Finding::new(&filename, format!("Cannot find field '{object}.{field_name}'"), config, Rule::RecordType_no_missing_objects));
                                                 },
                                             }
                                         },
                                         None => {
-                                            findings.push(Finding::new_error(&filename, format!("Cannot find object '{object}'")));
+                                            findings.push(Finding::new(&filename, format!("Cannot find object '{object}'"), config, Rule::RecordType_no_missing_fields));
                                         },
                                     }                                    
                                 },
@@ -106,7 +107,7 @@ impl CheckRecordTypes {
             .as_str());
     }
 
-    fn get_picklist_values(&self, global_pickist_values: &HashMap<String, HashSet<String>>, filename: &String, object: &String, field: &CustomField) -> (HashSet<String>, Vec<Finding>) {
+    fn get_picklist_values(&self, global_pickist_values: &HashMap<String, HashSet<String>>, filename: &String, object: &String, field: &CustomField, config: &Config) -> (HashSet<String>, Vec<Finding>) {
         let mut findings: Vec<Finding> = Vec::new();
         let mut values: HashSet<String> = HashSet::new();
 
@@ -121,7 +122,7 @@ impl CheckRecordTypes {
                             values = global_values.clone();
                         },
                         None => {
-                            findings.push(Finding::new_error(&filename, format!("Could not find global value set '{picklist_name}'")));
+                            findings.push(Finding::new(&filename, format!("Could not find global value set '{picklist_name}'"), config, Rule::Picklist_no_missing_global_value_set));
                         }, 
                     }
                 } else if value_set.value_set_definition.is_some() {
@@ -135,13 +136,13 @@ impl CheckRecordTypes {
                             }
                         },
                         None => {
-                            findings.push(Finding::new_error(&filename, format!("Picklist '{object}.{filename}' does not contain any values")));
+                            findings.push(Finding::new(&filename, format!("Picklist '{object}.{filename}' does not contain any values"), config, Rule::Picklist_no_empty_values));
                         },
                     }
                 }
             },
             None => {
-                findings.push(Finding::new_error(&filename, format!("Picklist '{object}.{filename}' does not contain a value set definition")));
+                findings.push(Finding::new(&filename, format!("Picklist '{object}.{filename}' does not contain a value set definition"), config, Rule::Picklist_no_empty_values));
             }
         }
 

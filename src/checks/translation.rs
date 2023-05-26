@@ -8,14 +8,16 @@ use crate::{finding::Finding, sf_xml_file::SFXMLFile};
 
 pub use crate::utilities::*;
 
+use self::config::{Config, Rule};
+
 pub struct CheckTranslations {}
 
 impl SFXMLFile<Translations> for CheckTranslations {
-    fn run_checks(&mut self, project_path: &PathBuf, _fix_it: bool) -> Vec<Finding> {
-        let (translations, mut findings) = self.get_structs(project_path);
+    fn run_checks(&mut self, project_path: &PathBuf, config: &Config, _fix_it: bool) -> Vec<Finding> {
+        let (translations, mut findings) = self.get_structs(project_path, config);
 
-        if translations.len() > 0 {
-            findings.append(&mut self.check_for_empty_translations(&translations));
+        if translations.len() > 0 && config.should_execute(Rule::Translations_no_empty_translations) {
+            findings.append(&mut self.check_for_empty_translations(&translations, config));
         }
 
         findings
@@ -30,6 +32,7 @@ impl CheckTranslations {
     pub fn check_for_empty_translations(
         &mut self,
         translations: &HashMap<String, Translations>,
+        config: &Config
     ) -> Vec<Finding> {
         let mut findings: Vec<Finding> = Vec::new();
 
@@ -44,6 +47,7 @@ impl CheckTranslations {
                                 "customApplications",
                                 filename,
                                 a.name.as_str(),
+                                config,
                             )
                         })
                         .collect();
@@ -62,6 +66,7 @@ impl CheckTranslations {
                                 "customLabels",
                                 filename,
                                 a.name.as_str(),
+                                config,
                             )
                         })
                         .collect();
@@ -80,6 +85,7 @@ impl CheckTranslations {
                                 "customTabs",
                                 filename,
                                 a.name.as_str(),
+                                config,
                             )
                         })
                         .collect();
@@ -98,6 +104,7 @@ impl CheckTranslations {
                                 "quickActions",
                                 filename,
                                 a.name.as_str(),
+                                config,
                             )
                         })
                         .collect();
@@ -116,6 +123,7 @@ impl CheckTranslations {
                                 "flowDefinitions",
                                 filename,
                                 &a.full_name.as_str(),
+                                config,
                             )
                         })
                         .collect();
@@ -128,10 +136,12 @@ impl CheckTranslations {
         return findings;
     }
 
-    pub fn create_missing_label_warning(type_of: &str, filename: &str, api_name: &str) -> Finding {
-        let mut finding = Finding::new_warning(
+    pub fn create_missing_label_warning(type_of: &str, filename: &str, api_name: &str, config: &Config) -> Finding {
+        let mut finding = Finding::new(
             &String::from(filename),
             format!("the {type_of} '{api_name}' misses a translation."),
+            config, 
+            Rule::Translations_no_empty_translations
         );
         finding.solution = Some(format!(
             "If you don't provide a translation remove it from the file"

@@ -1,8 +1,16 @@
+use serde::{Deserialize, Serialize};
+
+use crate::config::{Rule, Config};
+
 #[derive(PartialEq, Clone)]
+
+
+#[derive(Debug, Deserialize, Serialize)]
 pub enum FindingType {
     WARNING,
     ERROR,
     INFO,
+    OFF,
 }
 #[derive(Clone)]
 pub struct Finding {
@@ -11,7 +19,8 @@ pub struct Finding {
     pub position: Option<u32>,
     pub message: String,
     pub solution: Option<String>,
-    pub r#type: FindingType,
+    pub finding_type: FindingType,
+    pub rule: Rule,
 }
 
 impl Finding {
@@ -24,43 +33,22 @@ impl Finding {
         println!("{}", self.get_message());
     }
 
-    pub fn new_error(file: &String, message: String) -> Finding {
+    pub fn new(file: &str, message: String, config: &Config, rule: Rule) -> Finding {
         Finding {
-            file: String::from(file.as_str()),
+            file: String::from(file),
             line: None,
             position: None,
             message,
             solution: None,
-            r#type: FindingType::ERROR,
-        }
-    }
-
-    pub fn new_warning(file: &String, message: String) -> Finding {
-        Finding {
-            file: String::from(file.as_str()),
-            line: None,
-            position: None,
-            message,
-            solution: None,
-            r#type: FindingType::WARNING,
-        }
-    }
-
-    pub fn new_info(file: &String, message: String) -> Finding {
-        Finding {
-            file: String::from(file.as_str()),
-            line: None,
-            position: None,
-            message,
-            solution: None,
-            r#type: FindingType::INFO,
+            finding_type: config.rules.get(&rule).unwrap().clone(),
+            rule,
         }
     }
 
     pub fn filter_by_type(findings: &Vec<Finding>, finding_type: FindingType) -> Vec<Finding> {
         return findings
             .iter()
-            .filter(|f| f.r#type == finding_type)
+            .filter(|f| f.finding_type == finding_type)
             .map(|f| f.clone())
             .collect::<Vec<Finding>>();
     }

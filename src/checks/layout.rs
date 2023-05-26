@@ -10,14 +10,16 @@ use crate::{finding::Finding, sf_xml_file::SFXMLFile};
 
 pub use crate::utilities::*;
 
+use self::config::{Config, Rule};
+
 pub struct CheckLayout {}
 
 impl SFXMLFile<Layout> for CheckLayout {
-    fn run_checks(&mut self, project_path: &PathBuf, _fix_it: bool) -> Vec<Finding> {
-        let (layouts, mut findings) = self.get_structs(project_path);
+    fn run_checks(&mut self, project_path: &PathBuf, config: &Config,  _fix_it: bool) -> Vec<Finding> {
+        let (layouts, mut findings) = self.get_structs(project_path, config);
 
-        if layouts.len() > 0 {
-            findings.append(&mut self.validate_layout_sections(&layouts, project_path));
+        if layouts.len() > 0 && config.should_execute(Rule::Layout_no_missing_fields) {
+            findings.append(&mut self.validate_layout_sections(&layouts, project_path, config));
         }
 
         findings
@@ -33,6 +35,7 @@ impl CheckLayout {
         &mut self,
         layouts: &HashMap<String, Layout>,
         project_path: &PathBuf,
+        config: &Config
     ) -> Vec<Finding> {
         let mut findings: Vec<Finding> = Vec::new();
         for (filename, layout) in layouts {
@@ -43,7 +46,7 @@ impl CheckLayout {
                     let local_findings = layout_sections
                         .iter()
                         .map(|section| {
-                            section.validate_fields(filename, project_path, object.as_str())
+                            section.validate_fields(filename, project_path, object.as_str(), config)
                         })
                         .filter(|o| o.is_some())
                         .map(|findings| findings.unwrap())
@@ -91,11 +94,12 @@ impl LayoutSection {
         file: &String,
         project_path: &PathBuf,
         object: &str,
+        config: &Config
     ) -> Option<Vec<Finding>> {
         match &self.layout_columns {
             Some(layout_columns) => layout_columns
                 .iter()
-                .map(|col| col.validate_fields(file, project_path, object))
+                .map(|col| col.validate_fields(file, project_path, object, config))
                 .filter(|o| o.is_some())
                 .map(|findings| findings.unwrap())
                 .reduce(|mut acc, new| {
@@ -113,12 +117,13 @@ impl LayoutColumn {
         file: &String,
         project_path: &PathBuf,
         object: &str,
+        config: &Config
     ) -> Option<Vec<Finding>> {
         match &self.layout_items {
             Some(layout_items) => {
                 let findings = layout_items
                     .iter()
-                    .map(|item| item.validate_field(file, project_path, object))
+                    .map(|item| item.validate_field(file, project_path, object, config))
                     .filter(|result| result.is_some())
                     .map(|finding| finding.unwrap())
                     .collect::<Vec<Finding>>();
@@ -135,15 +140,18 @@ impl LayoutItem {
         file: &String,
         project_path: &PathBuf,
         object: &str,
+        config: &Config
     ) -> Option<Finding> {
         match &self.field {
             Some(field) => {
                 if !CheckObjectField::is_standard_or_managed(field.as_str())
                     && !CheckObjectField::does_field_exist(project_path, object, field.as_str())
                 {
-                    Some(Finding::new_error(
+                    Some(Finding::new(
                         file,
                         format!("Field does not exist: {field}"),
+                        config,
+                        config::Rule::Layout_no_missing_fields
                     ))
                 } else {
                     None

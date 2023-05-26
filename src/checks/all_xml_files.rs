@@ -1,52 +1,70 @@
-use std::{path::PathBuf, fs};
+use std::{fs, path::PathBuf};
 
-use quick_xml::{Reader, events::Event};
+use quick_xml::{events::Event, Reader};
 use serde::Deserialize;
 
-use crate::{sf_xml_file::SFXMLFile, util::{get_files_by_pattern}, finding::{Finding, FindingType}};
+use crate::{
+    config::{Config, Rule},
+    finding::{Finding},
+    sf_xml_file::SFXMLFile,
+    util::get_files_by_pattern,
+};
 
 #[derive(Debug, Deserialize)]
-pub struct CheckAllXmlFiles {
-
-}
+pub struct CheckAllXmlFiles {}
 
 impl SFXMLFile<CheckAllXmlFiles> for CheckAllXmlFiles {
-    fn run_checks(&mut self, project_path: &PathBuf, _fix_it: bool) -> Vec<Finding> {
-        
+    fn run_checks(
+        &mut self,
+        project_path: &PathBuf,
+        config: &Config,
+        _fix_it: bool,
+    ) -> Vec<Finding> {
         let mut findings: Vec<Finding> = Vec::new();
-        
-        findings.append(&mut self.validate_all_xml_structures(project_path, self.pattern()));
-        
+
+        if config.should_execute(Rule::XmlFiles_no_invalid_files) {
+            findings.append(&mut self.validate_all_xml_structures(
+                project_path,
+                self.pattern(),
+                config,
+            ));
+        }
+            
         findings
     }
 
     fn pattern(&self) -> String {
-        String::from("/force-app/**/*.xml")
+        String::from("/**/*.xml")
     }
 }
 
 impl CheckAllXmlFiles {
-    fn validate_all_xml_structures(&self, project_path: &PathBuf, pattern: String) -> Vec<Finding> {
+    fn validate_all_xml_structures(
+        &self,
+        project_path: &PathBuf,
+        pattern: String,
+        config: &Config,
+    ) -> Vec<Finding> {
         let files = get_files_by_pattern(&project_path, &pattern);
-    
+
         let mut findings: Vec<Finding> = Vec::new();
         for file in files {
             //println!("Checking {}", file.as_os_str().to_str().unwrap());
-            findings.append(&mut CheckAllXmlFiles::is_valid_xml_file(file));
+            findings.append(&mut CheckAllXmlFiles::is_valid_xml_file(file, config));
         }
 
         findings
     }
-    
-    fn is_valid_xml_file(path: PathBuf) -> Vec<Finding> {
+
+    fn is_valid_xml_file(path: PathBuf, config: &Config) -> Vec<Finding> {
         let file_path = path.to_str().unwrap();
         let xml = fs::read_to_string(file_path).expect("Unable to read file");
-    
+
         let mut reader = Reader::from_str(&xml);
         reader.trim_text(true);
-    
+
         let mut buf = Vec::new();
-    
+
         let mut findings: Vec<Finding> = Vec::new();
         // The `Reader` does not implement `Iterator` because it outputs borrowed data (`Cow`s)
         loop {
@@ -55,16 +73,16 @@ impl CheckAllXmlFiles {
             // buffer, we could directly call `reader.read_event()`
             match reader.read_event_into(&mut buf) {
                 Err(e) => {
-                    findings.push(Finding {
-                        file: String::from(file_path),
-                        line: None,
-                        position: Some(reader.buffer_position() as u32),
-                        message: format!("XML Parsing Error: {}", e.to_string()),
-                        r#type: FindingType::ERROR,
-                        solution: None,
-                    });
+                    let mut finding: Finding = Finding::new(
+                        &String::from(file_path),
+                        format!("XML Parsing Error: {}", e.to_string()),
+                        config,
+                        Rule::XmlFiles_no_invalid_files
+                    );
+                    finding.position = Some(reader.buffer_position() as u32);
+                    findings.push(finding);
                     break;
-                },
+                }
                 // exits the loop when reaching end of file
                 Ok(Event::Eof) => break,
                 _ => (),
@@ -72,7 +90,7 @@ impl CheckAllXmlFiles {
             // if we don't keep a borrow elsewhere, we can clear the buffer to keep memory usage low
             buf.clear();
         }
-    
+
         findings
     }
 }

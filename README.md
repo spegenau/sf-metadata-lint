@@ -34,19 +34,51 @@ If you use GitHub Actions you could use the following snippet to always use the 
 
 _your need to figure that yourself...Sorry..._
 
-## What errors can it find?
+## Configuration
 
-| Metadata Type   | Error                                                                                                                                      |
-| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
-| All XML-Files   | - unparseable files                                                                                                                        |
-| Permission Sets | - permissions for non-existing fields                                                                                                      |
-|                 | - permissions for required fields                                                                                                          |
-| Profiles        | - assignments of layouts that are not available                                                                                            |
-|                 | - Best practice: Use Permission Sets instead to give access to Record Types, Apex Classes, Pages, Objects, Fields, Flows, User Permissions |
-| Translations    | - Empty app translations                                                                                                                   |
-|                 | - Empty label translations                                                                                                                 |
-|                 | - Empty tab translations                                                                                                                   |
-|                 | - Empty quick action translations                                                                                                          |
-|                 | - Empty flow translations                                                                                                                  |
-| Layouts         | - Missing fields                                                                                                                           |
-| Layouts         | - Picklistvalue availability                                                                                                               |
+You can use the `-g, --generate-config` switch to generate a config file:
+
+```cmd
+sf-metadata-lint.exe --generate-config
+```
+
+If no config file is present in the project folder, the following standards will be used:
+
+```json
+{
+  "rules": {
+    "XmlFiles_no_invalid_files": "ERROR",
+    "Flow_no_missing_description": "WARNING",
+    "Picklist_no_missing_full_names": "ERROR",
+    "CustomField_no_missing_descriptions": "WARNING",
+    "Profile_no_unwanted_parts": "WARNING",
+    "RecordType_no_missing_objects": "ERROR",
+    "Picklist_no_empty_values": "ERROR",
+    "PermissionSet_no_missing_objects": "ERROR",
+    "RecordType_no_missing_fields": "ERROR",
+    "PermissionSet_no_permission_on_required_field": "ERROR",
+    "RecordType_no_missing_picklist_values": "ERROR",
+    "Picklist_no_missing_global_value_set": "ERROR",
+    "Layout_no_missing_fields": "ERROR",
+    "Profile_no_missing_page_layouts": "ERROR",
+    "XmlFiles_no_invalid_structs": "ERROR",
+    "PermissionSet_no_missing_fields": "ERROR",
+    "Translations_no_empty_translations": "WARNING",
+    "CustomApplication_no_missing_description": "WARNING",
+    "PermissionSet_no_invalid_field_names": "ERROR"
+  }
+}
+```
+
+The following report levels are available
+
+| Level   | Description                                                                                                                  |
+| ------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| OFF     | No reporting at all<br /> If possible the check will be skipped<br /> **Try in case of bugs with a rule**                    |
+| INFO    | The error will be reported but has no influence on the return code. A script (e.g. in CI/CD) will not stop in case of infos. |
+| WARNING | Will return an error code (Stops scripts), if warnings are not ignored <br/>`-i, --ignore-warnings `                         |
+| ERROR   | Will always stop scripts                                                                                                     |
+
+## Description of Rules
+
+_Work in progress_
