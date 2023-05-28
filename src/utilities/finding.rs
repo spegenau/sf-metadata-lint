@@ -12,7 +12,7 @@ pub enum FindingType {
     INFO,
     OFF,
 }
-#[derive(Clone)]
+#[derive(Clone, Debug)]
 pub struct Finding {
     pub file: String,
     pub line: Option<u32>,

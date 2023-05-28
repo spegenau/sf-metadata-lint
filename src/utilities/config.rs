@@ -75,7 +75,7 @@ impl Config {
         }
     }
 
-    fn get_default() -> Config {
+    pub fn get_default() -> Config {
         Config {
             rules: HashMap::from([
                 (Rule::CustomApplication_no_missing_description, FindingType::WARNING),
