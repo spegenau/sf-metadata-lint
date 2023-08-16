@@ -1,6 +1,6 @@
 [package]
 name = "sf_metadata_lint"
-version = "0.2.1"
+version = "0.3.1"
 edition = "2021"
 default-run = "sf-metadata-lint"
 

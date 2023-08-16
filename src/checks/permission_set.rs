@@ -64,30 +64,17 @@ impl CheckPermissionSet {
                                     let object = parts.get(0).unwrap();
                                     let field = parts.get(1).unwrap();
 
-                                    let OBJECT_AVAILABLE: bool = fields.contains_key(object);
-                                    let IS_STANDARD_FIELD: bool= !field.ends_with("__c");
+                                    let FIELD_EXISTS = self.is_field_available(fields, object, field);
 
+                                    let IS_STANDARD_FIELD: bool= !field.ends_with("__c");
                                     let IS_MANAGED_OBJECT: bool = managed_package_expr.is_match(&object);
                                     let IS_MANAGED_FIELD: bool = managed_package_expr.is_match(&field);
 
-                                    if OBJECT_AVAILABLE {
-                                        let FIELD_AVAILABLE: bool = fields.get(object).unwrap().contains_key(field);
-                                        if !FIELD_AVAILABLE && IS_MANAGED_FIELD {
-
-                                        } else if !FIELD_AVAILABLE && IS_STANDARD_FIELD {
-
-                                        } else if !FIELD_AVAILABLE {
-                                            let mut finding = Finding::new(&filename, format!("Custom Field '{}' on Object '{}' not found.", field, object), config, Rule::PermissionSet_no_missing_fields);
-                                            finding.solution = Some(format!("Add the field {} to the project.", field));
-                                            findings.push(finding);
-                                        }
-
-                                    } else if !IS_STANDARD_FIELD && !IS_MANAGED_OBJECT {
-                                            let mut finding = Finding::new(&filename, format!("Standard Object '{}' for Custom Field '{}' not found.", object, field), config, Rule::PermissionSet_no_missing_objects);
-                                            finding.solution = Some(format!("Add Object '{}' to the project.", object));
-                                            findings.push(finding);
+                                    if !IS_MANAGED_OBJECT && !IS_MANAGED_FIELD && !IS_STANDARD_FIELD && !FIELD_EXISTS{
+                                        let mut finding = Finding::new(&filename, format!("Custom Field '{}' on Object '{}' not found.", field, object), config, Rule::PermissionSet_no_missing_fields);
+                                        finding.solution = Some(format!("Add the field {} to the project.", field));
+                                        findings.push(finding);
                                     }
-
                                 } else {
                                     findings.push(Finding::new(&filename, format!("Invalid field format. Expecting Object.Field. Found '{}'", perm.field), config, Rule::PermissionSet_no_invalid_field_names));
                                 }
@@ -100,6 +87,31 @@ impl CheckPermissionSet {
         findings
     }
 
+
+    pub fn is_field_available(
+        &self,
+        fields: &HashMap<String, HashMap<String, CustomField>>,
+        object: &String,
+        field: &String
+    ) -> bool {
+        let mut objects_to_check = vec![format!("{object}")];
+        if object.eq_ignore_ascii_case("Event") || object.eq_ignore_ascii_case("Task") {
+            objects_to_check.push(format!("Activity"));
+        }
+
+        let mut exists = false;
+
+        for object in objects_to_check {
+            exists = fields.contains_key(&object)
+            && fields.get(&object).unwrap().contains_key(field);
+
+            if exists {
+                break;
+            }
+        }
+
+        return exists;
+    }
     pub fn no_required_field_permissions(
         &mut self,
         structs: &HashMap<String, PermissionSet>,

@@ -1,5 +1,6 @@
 use std::collections::HashMap;
 use std::path::PathBuf;
+use std::str::FromStr;
 
 use regex::Regex;
 
@@ -55,17 +56,25 @@ impl CheckObjectField {
     }
 
     pub fn does_field_exist(project_path: &PathBuf, object: &str, field: &str) -> bool {
-        let mut field_definition_path: PathBuf = PathBuf::new();
-        field_definition_path.push(project_path);
-        field_definition_path.push("force-app");
-        field_definition_path.push("main");
-        field_definition_path.push("default");
-        field_definition_path.push("objects");
-        field_definition_path.push(object);
-        field_definition_path.push("fields");
-        field_definition_path.push(format!("{field}.field-meta.xml"));
+        let objects_path = format!("{}/force-app/main/default/objects", project_path.as_os_str().to_str().unwrap());
+        let objects_path = PathBuf::from_str(objects_path.as_str()).unwrap();
 
-        return field_definition_path.exists();
+        let mut objects = vec![object];
+        if object.eq_ignore_ascii_case("Event") || object.eq_ignore_ascii_case("Task") {
+            objects.push("Activity");
+        }
+
+        let mut exists = false;
+        for object in objects {
+            let mut path = objects_path.clone();
+            path.push(format!("{object}/fields/{field}.field-meta.xml"));
+            exists = path.exists();
+
+            if exists {
+                break;
+            }
+        }
+        return exists;
     }
 
     pub fn check_for_descriptions(&self, fields: HashMap<String, CustomField>, config: &Config) -> Vec<Finding> {
